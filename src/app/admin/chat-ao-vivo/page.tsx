@@ -1,11 +1,11 @@
-export default function Admin-chat-ao-vivoPage() {
+export default function AdminChatAoVivoPage() {
   return (
     <div className="min-h-screen">
       <h1 className="text-4xl font-bold text-center py-20">
-        📄 admin - chat ao vivo
+        📄 Admin - Chat ao Vivo
       </h1>
       <p className="text-center text-muted-foreground">
-        Página: admin - chat ao vivo
+        Página em desenvolvimento...
       </p>
     </div>
   );

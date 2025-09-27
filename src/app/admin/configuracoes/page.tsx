@@ -1,11 +1,11 @@
-export default function Admin-configuracoesPage() {
+export default function AdminConfiguracoesPage() {
   return (
     <div className="min-h-screen">
       <h1 className="text-4xl font-bold text-center py-20">
-        📄 admin - configuracoes
+        📄 Admin - Configurações
       </h1>
       <p className="text-center text-muted-foreground">
-        Página: admin - configuracoes
+        Página em desenvolvimento...
       </p>
     </div>
   );

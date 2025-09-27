@@ -1,11 +1,11 @@
-export default function Admin-planosPage() {
+export default function AdminPlanosPage() {
   return (
     <div className="min-h-screen">
       <h1 className="text-4xl font-bold text-center py-20">
-        📄 admin - planos
+        📄 Admin - Planos
       </h1>
       <p className="text-center text-muted-foreground">
-        Página: admin - planos
+        Página em desenvolvimento...
       </p>
     </div>
   );

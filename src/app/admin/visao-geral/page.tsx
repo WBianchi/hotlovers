@@ -1,11 +1,11 @@
-export default function Admin-visao-geralPage() {
+export default function AdminVisaoGeralPage() {
   return (
     <div className="min-h-screen">
       <h1 className="text-4xl font-bold text-center py-20">
-        📄 admin - visao geral
+        📄 Admin - Visão Geral
       </h1>
       <p className="text-center text-muted-foreground">
-        Página: admin - visao geral
+        Página em desenvolvimento...
       </p>
     </div>
   );

@@ -1,11 +1,11 @@
-export default function Admin-relatoriosPage() {
+export default function AdminRelatoriosPage() {
   return (
     <div className="min-h-screen">
       <h1 className="text-4xl font-bold text-center py-20">
-        📄 admin - relatorios
+        📄 Admin - Relatórios
       </h1>
       <p className="text-center text-muted-foreground">
-        Página: admin - relatorios
+        Página em desenvolvimento...
       </p>
     </div>
   );
