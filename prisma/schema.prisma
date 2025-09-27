@@ -1,0 +1,581 @@
+// Schema Prisma para Plataforma de Assinatura de Conteúdo Adulto
+// Todas as entidades e relacionamentos necessários
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum TipoUsuario {
+  ADMIN
+  MODELO
+  ASSINANTE
+}
+
+enum StatusAssinatura {
+  ATIVA
+  CANCELADA
+  SUSPENSA
+  VENCIDA
+}
+
+enum StatusPagamento {
+  PENDENTE
+  APROVADO
+  REJEITADO
+  CANCELADO
+}
+
+enum TipoPlano {
+  PLATAFORMA
+  MODELO_INDIVIDUAL
+}
+
+enum StatusModelo {
+  PENDENTE_APROVACAO
+  APROVADA
+  REJEITADA
+  SUSPENSA
+}
+
+enum TipoTemplate {
+  EMAIL
+  WHATSAPP
+}
+
+enum StatusDisparo {
+  AGENDADO
+  ENVIADO
+  FALHADO
+}
+
+// ====================
+// ENTIDADES PRINCIPAIS
+// ====================
+
+// Administradores do Sistema
+model Admin {
+  id                String   @id @default(cuid())
+  nome              String
+  email             String   @unique
+  senha             String
+  telefone          String?
+  foto              String?
+  permissoes        Json     // Permissões específicas do admin
+  ativo             Boolean  @default(true)
+  ultimoLogin       DateTime?
+  criadoEm          DateTime @default(now())
+  atualizadoEm      DateTime @updatedAt
+
+  // Relacionamentos
+  bannersGerenciados Banner[]
+  configuracoes      ConfiguracaoSistema[]
+  templates          Template[]
+  disparos           Disparo[]
+
+  @@map("admins")
+}
+
+// Modelos/Criadoras de Conteúdo
+model Modelo {
+  id                    String        @id @default(cuid())
+  nome                  String
+  nomeArtistico         String?
+  email                 String        @unique
+  senha                 String
+  telefone              String
+  foto                  String?
+  videoVerificacao      String?       // URL do vídeo de verificação
+  fotoVerificacao       String?       // URL da foto de verificação
+  cpf                   String        @unique
+  rg                    String
+  
+  // Endereço
+  endereco              String
+  cidade                String
+  estado                String
+  bairro                String
+  rua                   String
+  numero                String
+  cep                   String
+  
+  // Links de Redes Sociais
+  linkPrivacy           String?
+  linkOnlyFans          String?
+  linkInstagram         String?
+  linkTwitter           String?
+  linkTikTok            String?
+  outrosLinks           Json?         // Array de objetos {nome, url}
+  
+  // Dados Bancários/Financeiros
+  contaBanco            String?
+  agencia               String?
+  banco                 String?
+  chavePix              String?
+  
+  // Status e Configurações
+  status                StatusModelo  @default(PENDENTE_APROVACAO)
+  ativo                 Boolean       @default(true)
+  destaque              Boolean       @default(false)
+  verificada            Boolean       @default(false)
+  biografia             String?
+  tags                  String?       // Tags para categorização (JSON string)
+  
+  // Configurações de Preços
+  precoMensal           Float?        // Preço mensal personalizado
+  percentualPlataforma  Float         @default(20.0) // % que fica para plataforma
+  
+  criadoEm              DateTime      @default(now())
+  atualizadoEm          DateTime      @updatedAt
+  ultimoLogin           DateTime?
+
+  // Relacionamentos
+  planos                Plano[]
+  packs                 Pack[]
+  assinaturas           Assinatura[]
+  doacoes               Doacao[]
+  gruposAfiliados       GrupoAfiliado[]
+  avaliacoes            Avaliacao[]
+  conteudos             Conteudo[]
+  mensagens             Mensagem[]
+  ganhos                Ganho[]
+
+  @@map("modelos")
+}
+
+// Assinantes/Usuários da Plataforma
+model Assinante {
+  id              String   @id @default(cuid())
+  nome            String
+  email           String   @unique
+  senha           String
+  telefone        String?
+  foto            String?
+  dataNascimento  DateTime?
+  
+  // Endereço
+  endereco        String?
+  cidade          String?
+  estado          String?
+  bairro          String?
+  rua             String?
+  numero          String?
+  cep             String?
+  
+  // Configurações
+  ativo           Boolean  @default(true)
+  verificado      Boolean  @default(false)
+  premium         Boolean  @default(false)
+  
+  criadoEm        DateTime @default(now())
+  atualizadoEm    DateTime @updatedAt
+  ultimoLogin     DateTime?
+
+  // Relacionamentos
+  assinaturas     Assinatura[]
+  doacoes         Doacao[]
+  comprasPacks    CompraPack[]
+  avaliacoes      Avaliacao[]
+  mensagens       Mensagem[]
+  afiliacao       Afiliado?
+
+  @@map("assinantes")
+}
+
+// ====================
+// SISTEMA DE PLANOS
+// ====================
+
+model Plano {
+  id              String    @id @default(cuid())
+  nome            String
+  descricao       String
+  preco           Float
+  tipo            TipoPlano
+  duracao         Int       // Duração em dias
+  
+  // Configurações específicas
+  modeloId        String?   // Se for plano individual de modelo
+  modelo          Modelo?   @relation(fields: [modeloId], references: [id])
+  
+  // Benefícios
+  acessoTotalConteudo Boolean @default(false)
+  limiteMensagens     Int?    // Limite de mensagens por mês
+  downloadPacks       Boolean @default(false)
+  suporteVip          Boolean @default(false)
+  
+  ativo           Boolean   @default(true)
+  destaque        Boolean   @default(false)
+  
+  criadoEm        DateTime  @default(now())
+  atualizadoEm    DateTime  @updatedAt
+
+  // Relacionamentos
+  assinaturas     Assinatura[]
+
+  @@map("planos")
+}
+
+model Assinatura {
+  id              String           @id @default(cuid())
+  assinanteId     String
+  assinante       Assinante        @relation(fields: [assinanteId], references: [id])
+  planoId         String
+  plano           Plano            @relation(fields: [planoId], references: [id])
+  modeloId        String?          // Se for assinatura direta de modelo
+  modelo          Modelo?          @relation(fields: [modeloId], references: [id])
+  
+  status          StatusAssinatura @default(ATIVA)
+  dataInicio      DateTime         @default(now())
+  dataFim         DateTime
+  valor           Float
+  
+  // Dados de Pagamento
+  stripeSubscriptionId String?     @unique
+  formaPagamento      String?
+  
+  canceladaEm     DateTime?
+  motivoCancelamento String?
+  
+  criadoEm        DateTime @default(now())
+  atualizadoEm    DateTime @updatedAt
+
+  @@map("assinaturas")
+}
+
+// ====================
+// SISTEMA DE PACKS
+// ====================
+
+model Pack {
+  id          String @id @default(cuid())
+  modeloId    String
+  modelo      Modelo @relation(fields: [modeloId], references: [id])
+  
+  titulo      String
+  descricao   String
+  preco       Float
+  capa        String // URL da imagem de capa
+  
+  // Configurações
+  ativo       Boolean @default(true)
+  destaque    Boolean @default(false)
+  limitado    Boolean @default(false) // Se tem limite de vendas
+  limite      Int?    // Quantidade máxima de vendas
+  vendidos    Int     @default(0)
+  
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  // Relacionamentos
+  conteudos   ConteudoPack[]
+  compras     CompraPack[]
+
+  @@map("packs")
+}
+
+model ConteudoPack {
+  id       String @id @default(cuid())
+  packId   String
+  pack     Pack   @relation(fields: [packId], references: [id])
+  
+  tipo     String // "foto" ou "video"
+  url      String
+  titulo   String?
+  ordem    Int    @default(0)
+  
+  criadoEm DateTime @default(now())
+
+  @@map("conteudo_packs")
+}
+
+model CompraPack {
+  id              String         @id @default(cuid())
+  assinanteId     String
+  assinante       Assinante      @relation(fields: [assinanteId], references: [id])
+  packId          String
+  pack            Pack           @relation(fields: [packId], references: [id])
+  
+  valor           Float
+  statusPagamento StatusPagamento @default(PENDENTE)
+  
+  // Dados do Stripe
+  stripePaymentId String?        @unique
+  
+  criadoEm        DateTime       @default(now())
+  atualizadoEm    DateTime       @updatedAt
+
+  @@map("compra_packs")
+}
+
+// ====================
+// SISTEMA DE DOAÇÕES
+// ====================
+
+model Doacao {
+  id              String         @id @default(cuid())
+  assinanteId     String
+  assinante       Assinante      @relation(fields: [assinanteId], references: [id])
+  modeloId        String
+  modelo          Modelo         @relation(fields: [modeloId], references: [id])
+  
+  valor           Float
+  mensagem        String?
+  statusPagamento StatusPagamento @default(PENDENTE)
+  
+  // Dados do Stripe
+  stripePaymentId String?        @unique
+  
+  criadoEm        DateTime       @default(now())
+  atualizadoEm    DateTime       @updatedAt
+
+  @@map("doacoes")
+}
+
+// ====================
+// SISTEMA DE AFILIADOS
+// ====================
+
+model Afiliado {
+  id           String    @id @default(cuid())
+  assinanteId  String    @unique
+  assinante    Assinante @relation(fields: [assinanteId], references: [id])
+  
+  codigo       String    @unique // Código único do afiliado
+  percentual   Float     @default(10.0) // Percentual de comissão
+  
+  // Estatísticas
+  totalCliques    Int @default(0)
+  totalConversoes Int @default(0)
+  totalGanho      Float @default(0)
+  
+  ativo        Boolean   @default(true)
+  criadoEm     DateTime  @default(now())
+  atualizadoEm DateTime  @updatedAt
+
+  // Relacionamentos
+  conversoes   ConversaoAfiliado[]
+  grupos       GrupoAfiliado[]
+
+  @@map("afiliados")
+}
+
+model GrupoAfiliado {
+  id          String @id @default(cuid())
+  modeloId    String
+  modelo      Modelo @relation(fields: [modeloId], references: [id])
+  afiliadoId  String
+  afiliado    Afiliado @relation(fields: [afiliadoId], references: [id])
+  
+  percentual  Float @default(15.0) // Percentual específico para este grupo
+  ativo       Boolean @default(true)
+  
+  criadoEm    DateTime @default(now())
+
+  @@map("grupo_afiliados")
+}
+
+model ConversaoAfiliado {
+  id           String    @id @default(cuid())
+  afiliadoId   String
+  afiliado     Afiliado  @relation(fields: [afiliadoId], references: [id])
+  assinaturaId String?
+  compraPack   String?
+  doacaoId     String?
+  
+  valor        Float
+  comissao     Float
+  
+  criadoEm     DateTime  @default(now())
+
+  @@map("conversao_afiliados")
+}
+
+// ====================
+// SISTEMA DE MENSAGENS
+// ====================
+
+model Mensagem {
+  id          String    @id @default(cuid())
+  remetenteId String
+  modeloId    String
+  modelo      Modelo    @relation(fields: [modeloId], references: [id])
+  assinanteId String
+  assinante   Assinante @relation(fields: [assinanteId], references: [id])
+  
+  conteudo    String
+  lida        Boolean   @default(false)
+  
+  criadoEm    DateTime  @default(now())
+
+  @@map("mensagens")
+}
+
+// ====================
+// SISTEMA DE CONTEÚDO
+// ====================
+
+model Conteudo {
+  id          String @id @default(cuid())
+  modeloId    String
+  modelo      Modelo @relation(fields: [modeloId], references: [id])
+  
+  tipo        String // "foto", "video", "live"
+  titulo      String
+  descricao   String?
+  url         String
+  thumbnail   String?
+  
+  // Configurações
+  premium     Boolean @default(false)
+  gratuito    Boolean @default(false)
+  tags        String?
+  
+  // Estatísticas
+  visualizacoes Int @default(0)
+  curtidas      Int @default(0)
+  
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@map("conteudos")
+}
+
+// ====================
+// SISTEMA DE AVALIAÇÕES
+// ====================
+
+model Avaliacao {
+  id          String    @id @default(cuid())
+  assinanteId String
+  assinante   Assinante @relation(fields: [assinanteId], references: [id])
+  modeloId    String
+  modelo      Modelo    @relation(fields: [modeloId], references: [id])
+  
+  nota        Int       // 1 a 5
+  comentario  String?
+  
+  criadoEm    DateTime  @default(now())
+
+  @@unique([assinanteId, modeloId])
+  @@map("avaliacoes")
+}
+
+// ====================
+// SISTEMA DE COMUNICAÇÃO
+// ====================
+
+model Template {
+  id          String       @id @default(cuid())
+  adminId     String
+  admin       Admin        @relation(fields: [adminId], references: [id])
+  
+  nome        String
+  tipo        TipoTemplate
+  assunto     String?      // Para emails
+  conteudo    String
+  
+  // Variáveis disponíveis no template
+  variaveis   Json         // Array de variáveis como {nome, placeholder}
+  
+  ativo       Boolean      @default(true)
+  criadoEm    DateTime     @default(now())
+  atualizadoEm DateTime    @updatedAt
+
+  // Relacionamentos
+  disparos    Disparo[]
+
+  @@map("templates")
+}
+
+model Disparo {
+  id          String        @id @default(cuid())
+  adminId     String
+  admin       Admin         @relation(fields: [adminId], references: [id])
+  templateId  String
+  template    Template      @relation(fields: [templateId], references: [id])
+  
+  titulo      String
+  destinatarios Json        // Array de IDs ou critérios
+  agendadoPara DateTime?
+  
+  status      StatusDisparo @default(AGENDADO)
+  enviados    Int          @default(0)
+  falhados    Int          @default(0)
+  
+  criadoEm    DateTime     @default(now())
+  executadoEm DateTime?
+
+  @@map("disparos")
+}
+
+// ====================
+// GESTÃO DA PLATAFORMA
+// ====================
+
+model Banner {
+  id          String @id @default(cuid())
+  adminId     String
+  admin       Admin  @relation(fields: [adminId], references: [id])
+  
+  titulo      String
+  descricao   String?
+  imagem      String
+  link        String?
+  
+  // Posicionamento
+  posicao     String // "hero", "lateral", "footer", etc.
+  ordem       Int    @default(0)
+  
+  ativo       Boolean @default(true)
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@map("banners")
+}
+
+model ConfiguracaoSistema {
+  id          String @id @default(cuid())
+  adminId     String
+  admin       Admin  @relation(fields: [adminId], references: [id])
+  
+  chave       String @unique
+  valor       String
+  descricao   String?
+  
+  atualizadoEm DateTime @updatedAt
+
+  @@map("configuracao_sistema")
+}
+
+// ====================
+// SISTEMA FINANCEIRO
+// ====================
+
+model Ganho {
+  id          String @id @default(cuid())
+  modeloId    String
+  modelo      Modelo @relation(fields: [modeloId], references: [id])
+  
+  tipo        String // "assinatura", "pack", "doacao", "afiliado"
+  valor       Float
+  comissao    Float  // Valor que fica com a plataforma
+  liquido     Float  // Valor que vai para a modelo
+  
+  // Referências
+  assinaturaId String?
+  packId       String?
+  doacaoId     String?
+  
+  processado   Boolean @default(false)
+  processadoEm DateTime?
+  
+  criadoEm     DateTime @default(now())
+
+  @@map("ganhos")
+}
