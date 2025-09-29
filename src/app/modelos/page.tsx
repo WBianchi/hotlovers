@@ -151,7 +151,7 @@ export default function ModelosPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header usuario={usuarioExemplo} />
+      <Header />
       
       <main className="flex-1">
         {/* Carrossel 1 - Hot Videos Exclusivos */}

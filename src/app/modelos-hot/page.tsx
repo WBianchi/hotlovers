@@ -244,14 +244,9 @@ function CarrosselDark({ titulo, subtitulo }: { titulo: string; subtitulo: strin
 export default function ModelosHotPage() {
   return (
     <div className="min-h-screen bg-black">
-      <Header usuario={{
-        nome: "Black Member",
-        email: "black@hotlovers.com",
-        foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-        tipo: "assinante" as const
-      }} />
+      <Header />
       
-      <main className="pt-20">
+      <main className="flex-1">
         {/* Hero Section Dark */}
         <section className="relative py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden">
           <div className="absolute inset-0 opacity-20"></div>

@@ -275,7 +275,7 @@ export default function SobrePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header usuario={usuarioExemplo} />
+      <Header />
       
       <main className="flex-1">
         <HeroSobre />
