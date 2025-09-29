@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookiesBanner } from "@/components/cookies-banner";
@@ -10,7 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { Eye, EyeOff, Mail, Lock, User, Calendar, Heart, Shield, Star, Users, Crown, Camera } from "lucide-react";
 import { FaGoogle, FaFacebook, FaApple } from "react-icons/fa";
 
-export default function CadastroPage() {
+function CadastroContent() {
   const searchParams = useSearchParams();
   const [tipoUsuario, setTipoUsuario] = useState<'assinante' | 'modelo'>('assinante');
   const [showPassword, setShowPassword] = useState(false);
@@ -476,5 +476,13 @@ export default function CadastroPage() {
       <CookiesBanner />
       <ChatFlutuante />
     </div>
+  );
+}
+
+export default function CadastroPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <CadastroContent />
+    </Suspense>
   );
 }

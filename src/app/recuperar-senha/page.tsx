@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookiesBanner } from "@/components/cookies-banner";
@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Eye, EyeOff, Mail, Lock, Shield, ArrowLeft, Key, CheckCircle } from "lucide-react";
 
-export default function RecuperarSenhaPage() {
+function RecuperarSenhaContent() {
   const searchParams = useSearchParams();
   const [step, setStep] = useState<'email' | 'reset'>('email');
   const [loading, setLoading] = useState(false);
@@ -292,5 +292,13 @@ export default function RecuperarSenhaPage() {
       <CookiesBanner />
       <ChatFlutuante />
     </div>
+  );
+}
+
+export default function RecuperarSenhaPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <RecuperarSenhaContent />
+    </Suspense>
   );
 }

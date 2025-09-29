@@ -1,4 +1,4 @@
-export default function Assinante-pagamentosPage() {
+export default function AssinantePagamentosPage() {
   return (
     <div className="min-h-screen">
       <h1 className="text-4xl font-bold text-center py-20">
