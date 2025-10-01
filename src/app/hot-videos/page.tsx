@@ -286,12 +286,7 @@ function CarrosselVideo({ titulo, subtitulo }: { titulo: string; subtitulo: stri
 export default function HotVideosPage() {
   return (
     <div className="min-h-screen bg-black">
-      <Header usuario={{
-        nome: "VIP Member",
-        email: "vip@hotlovers.com",
-        foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-        tipo: "assinante" as const
-      }} />
+      <Header />
       
       <main className="pt-20">
         {/* Hero Section */}

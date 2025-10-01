@@ -9,6 +9,44 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>('light');
   const [isOpen, setIsOpen] = useState(false);
 
+  // Aplicar tema no carregamento
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+      applyTheme(savedTheme);
+    }
+  }, []);
+
+  // Função para aplicar o tema
+  const applyTheme = (newTheme: Theme) => {
+    const root = document.documentElement;
+    
+    if (newTheme === 'dark') {
+      root.classList.add('dark');
+    } else if (newTheme === 'light') {
+      root.classList.remove('dark');
+    } else {
+      // System theme
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    }
+    
+    // Salvar no localStorage
+    localStorage.setItem('theme', newTheme);
+  };
+
+  // Handler para mudar o tema
+  const handleThemeChange = (newTheme: Theme) => {
+    setTheme(newTheme);
+    applyTheme(newTheme);
+    setIsOpen(false);
+  };
+
   const themes = [
     { id: 'light', label: 'Light', icon: Sun, color: 'text-yellow-500' },
     { id: 'dark', label: 'Dark', icon: Moon, color: 'text-indigo-500' },
@@ -51,10 +89,7 @@ export function ThemeToggle() {
               {themes.map((themeOption) => (
                 <button
                   key={themeOption.id}
-                  onClick={() => {
-                    setTheme(themeOption.id);
-                    setIsOpen(false);
-                  }}
+                  onClick={() => handleThemeChange(themeOption.id)}
                   className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left transition-all duration-200 hover:bg-gray-50 group ${
                     theme === themeOption.id ? 'bg-hotlovers-red/5 border border-hotlovers-red/20' : ''
                   }`}

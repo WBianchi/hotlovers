@@ -1,12 +1,22 @@
+"use client";
+
+import { AdminLayout } from "../../../components/admin/admin-layout";
+import { DashboardContent } from "../../../components/admin/dashboard-content";
+import { ConfiguracoesHeader } from "../../../components/admin/configuracoes/configuracoes-header";
+import { ConfiguracoesCards } from "../../../components/admin/configuracoes/configuracoes-cards";
+
 export default function AdminConfiguracoesPage() {
   return (
-    <div className="min-h-screen">
-      <h1 className="text-4xl font-bold text-center py-20">
-        📄 Admin - Configurações
-      </h1>
-      <p className="text-center text-muted-foreground">
-        Página em desenvolvimento...
-      </p>
-    </div>
+    <AdminLayout>
+      <DashboardContent>
+        <div className="p-6 space-y-6">
+          {/* Header */}
+          <ConfiguracoesHeader />
+          
+          {/* Configuration Cards */}
+          <ConfiguracoesCards />
+        </div>
+      </DashboardContent>
+    </AdminLayout>
   );
 }

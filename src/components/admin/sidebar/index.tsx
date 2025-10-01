@@ -48,7 +48,7 @@ export function AdminSidebar() {
 
       {/* Sidebar */}
       <aside 
-        className={`fixed left-0 top-0 bottom-0 z-50 bg-white border-r border-gray-200/50 shadow-xl transition-all duration-300 ease-in-out ${
+        className={`fixed left-0 top-0 bottom-0 z-50 bg-white dark:bg-gray-900 border-r border-gray-200/50 dark:border-gray-700/50 shadow-xl transition-all duration-300 ease-in-out ${
           isExpanded ? 'w-72' : 'w-16'
         } ${isMobile && !isExpanded ? '-translate-x-full' : ''}`}
       >
@@ -56,12 +56,12 @@ export function AdminSidebar() {
         {/* Toggle Button */}
         <button
           onClick={toggleSidebar}
-          className="absolute -right-3 top-20 w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 z-10"
+          className="absolute -right-3 top-20 w-6 h-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-200 hover:scale-110 z-10"
         >
           {isExpanded ? (
-            <ChevronLeft className="w-3 h-3 text-gray-600" />
+            <ChevronLeft className="w-3 h-3 text-gray-600 dark:text-gray-400" />
           ) : (
-            <ChevronRight className="w-3 h-3 text-gray-600" />
+            <ChevronRight className="w-3 h-3 text-gray-600 dark:text-gray-400" />
           )}
         </button>
 
@@ -79,7 +79,7 @@ export function AdminSidebar() {
         </div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/5 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/5 dark:to-gray-800/5 pointer-events-none"></div>
       </aside>
     </SidebarContext.Provider>
   );

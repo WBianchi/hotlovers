@@ -1,12 +1,22 @@
+"use client";
+
+import { AdminLayout } from "../../../components/admin/admin-layout";
+import { DashboardContent } from "../../../components/admin/dashboard-content";
+import { IntegracoesHeader } from "../../../components/admin/integracoes/integracoes-header";
+import { IntegracoesCards } from "../../../components/admin/integracoes/integracoes-cards";
+
 export default function AdminIntegracoesPage() {
   return (
-    <div className="min-h-screen">
-      <h1 className="text-4xl font-bold text-center py-20">
-        📄 Admin - Integrações
-      </h1>
-      <p className="text-center text-muted-foreground">
-        Página em desenvolvimento...
-      </p>
-    </div>
+    <AdminLayout>
+      <DashboardContent>
+        <div className="p-6 space-y-6">
+          {/* Header */}
+          <IntegracoesHeader />
+          
+          {/* Integration Cards */}
+          <IntegracoesCards />
+        </div>
+      </DashboardContent>
+    </AdminLayout>
   );
 }

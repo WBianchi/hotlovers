@@ -1,12 +1,30 @@
+"use client";
+
+import { AdminLayout } from "../../../components/admin/admin-layout";
+import { DashboardContent } from "../../../components/admin/dashboard-content";
+import { ComissoesHeader } from "../../../components/admin/comissoes/comissoes-header";
+import { ComissoesStats } from "../../../components/admin/comissoes/comissoes-stats";
+import { ComissoesChart } from "../../../components/admin/comissoes/comissoes-chart";
+import { ComissoesTable } from "../../../components/admin/comissoes/comissoes-table";
+
 export default function AdminComissoesPage() {
   return (
-    <div className="min-h-screen">
-      <h1 className="text-4xl font-bold text-center py-20">
-        📄 Admin - Comissões
-      </h1>
-      <p className="text-center text-muted-foreground">
-        Página em desenvolvimento...
-      </p>
-    </div>
+    <AdminLayout>
+      <DashboardContent>
+        <div className="p-6 space-y-6">
+          {/* Header */}
+          <ComissoesHeader />
+          
+          {/* Stats Cards */}
+          <ComissoesStats />
+          
+          {/* Chart */}
+          <ComissoesChart />
+          
+          {/* Comissões Table */}
+          <ComissoesTable />
+        </div>
+      </DashboardContent>
+    </AdminLayout>
   );
 }

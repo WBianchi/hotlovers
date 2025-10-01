@@ -92,39 +92,40 @@ export function Secoes({ className }: SecoesProps) {
               </div>
             </div>
 
-            {/* Shape Direita - MOLDURA HEXAGONAL */}
+            {/* Shape Direita - MOLDURA ROUND MODERNA (Mais Larga) */}
             <div className="relative flex items-center justify-center lg:justify-end">
-              <div className="relative w-[800px] h-[700px]">
-                {/* Moldura hexagonal para seção 1 */}
-                <div className="absolute inset-0 bg-gradient-to-br from-hotlovers-red/5 to-red-500/5 rounded-[4rem] rotate-6 shadow-2xl transform skew-y-3"></div>
-                <div className="absolute inset-3 bg-card/80 backdrop-blur-sm rounded-[3.5rem] -rotate-3 shadow-xl transform -skew-y-2"></div>
+              <div className="relative w-[850px] h-[700px]">
+                {/* Moldura externa - sombra suave */}
+                <div className="absolute inset-0 bg-hotlovers-red/5 rounded-[3rem] shadow-2xl"></div>
                 
-                <div className="absolute inset-4 bg-gradient-to-br from-muted/50 to-muted rounded-[2rem] flex items-center justify-center overflow-hidden">
-                  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                {/* Moldura principal - branca com borda vermelha */}
+                <div className="absolute inset-4 bg-white dark:bg-gray-900 rounded-[2.5rem] border-2 border-hotlovers-red/20 shadow-xl"></div>
+                
+                {/* Container da imagem */}
+                <div className="absolute inset-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-[2rem] overflow-hidden">
+                  <div className="relative w-full h-full flex items-center justify-center">
                     <img
-                      src="/modelo.png"
+                      src="/image.jpg"
                       alt="Seja Modelo HotLovers"
-                      className="w-auto object-cover animate-float"
+                      className="w-full h-full object-cover animate-float"
                       style={{
-                        filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.2))',
-                        transform: 'scale(2.2) translateX(20px) translateY(150px)',
-                        height: '180%'
+                        filter: 'drop-shadow(0 20px 40px rgba(220,38,127,0.15))'
                       }}
                     />
                   </div>
                 </div>
 
-                {/* Elementos flutuantes vermelhos */}
-                <div className="absolute -top-6 -right-6 w-20 h-20 bg-hotlovers-gradient rounded-full flex items-center justify-center shadow-lg animate-float">
-                  <span className="text-white text-2xl">💰</span>
-                </div>
-                
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-hotlovers-red rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                {/* Elementos flutuantes modernos */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-hotlovers-red rounded-2xl flex items-center justify-center shadow-lg animate-float">
                   <DollarSign className="w-6 h-6 text-white" />
                 </div>
                 
-                <div className="absolute top-20 -left-8 w-12 h-12 bg-red-400 rounded-full flex items-center justify-center shadow-lg animate-pulse">
-                  <TrendingUp className="w-6 h-6 text-white" />
+                <div className="absolute -bottom-3 -left-3 w-14 h-14 bg-white dark:bg-gray-800 border-2 border-hotlovers-red rounded-xl flex items-center justify-center shadow-lg animate-bounce">
+                  <TrendingUp className="w-5 h-5 text-hotlovers-red" />
+                </div>
+                
+                <div className="absolute top-20 -left-6 w-12 h-12 bg-hotlovers-red/10 backdrop-blur-sm rounded-full flex items-center justify-center animate-pulse">
+                  <span className="text-hotlovers-red text-lg">💰</span>
                 </div>
               </div>
             </div>
@@ -143,39 +144,40 @@ export function Secoes({ className }: SecoesProps) {
         <div className="relative w-full max-w-none mx-auto px-6 lg:px-16 py-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
             
-            {/* Shape Esquerda - MOLDURA DIAMANTE */}
+            {/* Shape Esquerda - MOLDURA ROUND MODERNA (Média) */}
             <div className="relative flex items-center justify-center lg:justify-start">
-              <div className="relative w-[800px] h-[700px]">
-                {/* Moldura diamante para seção 2 */}
-                <div className="absolute inset-0 bg-gradient-to-br from-hotlovers-red/5 to-red-500/5 rounded-[5rem] rotate-45 shadow-2xl transform scale-75"></div>
-                <div className="absolute inset-1 bg-card/80 backdrop-blur-sm rounded-[4.5rem] -rotate-45 shadow-xl transform scale-75"></div>
+              <div className="relative w-[750px] h-[700px]">
+                {/* Moldura externa - sombra suave */}
+                <div className="absolute inset-0 bg-hotlovers-red/8 rounded-[3.5rem] shadow-2xl"></div>
                 
-                <div className="absolute inset-4 bg-gradient-to-br from-muted/50 to-muted rounded-[2rem] flex items-center justify-center overflow-hidden">
-                  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                {/* Moldura principal - dark com borda vermelha */}
+                <div className="absolute inset-6 bg-gray-900 dark:bg-white rounded-[3rem] border-2 border-hotlovers-red/30 shadow-xl"></div>
+                
+                {/* Container da imagem */}
+                <div className="absolute inset-10 bg-gradient-to-br from-gray-800 to-black dark:from-gray-100 dark:to-gray-200 rounded-[2.5rem] overflow-hidden">
+                  <div className="relative w-full h-full flex items-center justify-center">
                     <img
-                      src="/modelo.png"
+                      src="/image (1).jpg"
                       alt="Conteúdo Premium HotLovers"
-                      className="w-auto object-cover animate-float"
+                      className="w-full h-full object-cover animate-float"
                       style={{
-                        filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.2))',
-                        transform: 'scale(2.2) translateX(-20px) translateY(150px)',
-                        height: '180%'
+                        filter: 'drop-shadow(0 20px 40px rgba(220,38,127,0.2))'
                       }}
                     />
                   </div>
                 </div>
 
-                {/* Elementos flutuantes vermelhos */}
-                <div className="absolute -top-6 -left-6 w-20 h-20 bg-hotlovers-gradient rounded-full flex items-center justify-center shadow-lg animate-float">
-                  <span className="text-white text-2xl">👑</span>
+                {/* Elementos flutuantes modernos */}
+                <div className="absolute -top-5 -left-5 w-18 h-18 bg-hotlovers-red rounded-3xl flex items-center justify-center shadow-lg animate-float">
+                  <Crown className="w-7 h-7 text-white" />
                 </div>
                 
-                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-hotlovers-red rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                  <Crown className="w-6 h-6 text-white" />
+                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-white dark:bg-gray-900 border-2 border-hotlovers-red rounded-2xl flex items-center justify-center shadow-lg animate-bounce">
+                  <Heart className="w-6 h-6 text-hotlovers-red fill-current" />
                 </div>
                 
-                <div className="absolute bottom-32 -left-8 w-14 h-14 bg-red-400 rounded-full flex items-center justify-center shadow-lg animate-float">
-                  <Heart className="w-6 h-6 text-white fill-current" />
+                <div className="absolute top-24 -right-8 w-14 h-14 bg-hotlovers-red/15 backdrop-blur-sm rounded-2xl flex items-center justify-center animate-pulse">
+                  <span className="text-hotlovers-red text-xl">👑</span>
                 </div>
               </div>
             </div>
@@ -334,39 +336,40 @@ export function Secoes({ className }: SecoesProps) {
               </div>
             </div>
 
-            {/* Shape Direita - MOLDURA ONDULADA */}
+            {/* Shape Direita - MOLDURA ROUND MODERNA (Mais Estreita) */}
             <div className="relative flex items-center justify-center lg:justify-end">
-              <div className="relative w-[800px] h-[700px]">
-                {/* Moldura ondulada para seção 3 */}
-                <div className="absolute inset-0 bg-gradient-to-br from-hotlovers-red/5 to-red-500/5 rounded-[6rem] rotate-12 shadow-2xl transform -skew-x-6"></div>
-                <div className="absolute inset-2 bg-card/80 backdrop-blur-sm rounded-[5.5rem] -rotate-6 shadow-xl transform skew-x-3"></div>
+              <div className="relative w-[650px] h-[700px]">
+                {/* Moldura externa - sombra suave */}
+                <div className="absolute inset-0 bg-hotlovers-red/6 rounded-[4rem] shadow-2xl"></div>
                 
-                <div className="absolute inset-4 bg-gradient-to-br from-muted/50 to-muted rounded-[2rem] flex items-center justify-center overflow-hidden">
-                  <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                {/* Moldura principal - branca/dark com borda vermelha forte */}
+                <div className="absolute inset-5 bg-white dark:bg-gray-900 rounded-[3.5rem] border-3 border-hotlovers-red/40 shadow-xl"></div>
+                
+                {/* Container da imagem */}
+                <div className="absolute inset-9 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-[3rem] overflow-hidden">
+                  <div className="relative w-full h-full flex items-center justify-center">
                     <img
-                      src="/modelo.png"
+                      src="/image (2).jpg"
                       alt="Segurança HotLovers"
-                      className="w-auto object-cover animate-float"
+                      className="w-full h-full object-cover animate-float"
                       style={{
-                        filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.2))',
-                        transform: 'scale(2.2) translateX(20px) translateY(150px)',
-                        height: '180%'
+                        filter: 'drop-shadow(0 20px 40px rgba(220,38,127,0.18))'
                       }}
                     />
                   </div>
                 </div>
 
-                {/* Elementos flutuantes vermelhos */}
-                <div className="absolute -top-6 -right-6 w-20 h-20 bg-hotlovers-gradient rounded-full flex items-center justify-center shadow-lg animate-float">
-                  <span className="text-white text-2xl">🔒</span>
-                </div>
-                
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-hotlovers-red rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                {/* Elementos flutuantes modernos */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-hotlovers-red rounded-2xl flex items-center justify-center shadow-lg animate-float">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
                 
-                <div className="absolute top-20 -left-8 w-12 h-12 bg-red-400 rounded-full flex items-center justify-center shadow-lg animate-pulse">
-                  <Lock className="w-6 h-6 text-white" />
+                <div className="absolute -bottom-3 -left-3 w-14 h-14 bg-white dark:bg-gray-800 border-2 border-hotlovers-red rounded-xl flex items-center justify-center shadow-lg animate-bounce">
+                  <Lock className="w-5 h-5 text-hotlovers-red" />
+                </div>
+                
+                <div className="absolute top-16 -left-6 w-12 h-12 bg-hotlovers-red/12 backdrop-blur-sm rounded-full flex items-center justify-center animate-pulse">
+                  <span className="text-hotlovers-red text-lg">🔒</span>
                 </div>
               </div>
             </div>

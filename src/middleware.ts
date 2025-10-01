@@ -1,63 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
-import AuthService from './lib/auth';
 
 export const runtime = 'nodejs';
 
-// Rotas protegidas por tipo de usuário
-const PROTECTED_ROUTES = {
-  admin: ['/admin'],
-  modelo: ['/modelo'],
-  assinante: ['/assinante'],
-  public: ['/login', '/cadastro', '/recuperar-senha', '/verificar-email']
-};
-
-// Rotas que redirecionam usuários logados
-const AUTH_ROUTES = ['/login', '/cadastro'];
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const token = request.cookies.get('auth_token')?.value;
+  
+  // Apenas proteger rotas específicas de admin, modelo e assinante
+  // IMPORTANTE: /modelo/ com barra para não pegar /modelos ou /modelos-hot
+  const isAdminRoute = pathname.startsWith('/admin/');
+  const isModeloRoute = pathname.startsWith('/modelo/') || pathname === '/modelo';
+  const isAssinanteRoute = pathname.startsWith('/assinante/') || pathname === '/assinante';
 
-  console.log('🔍 Middleware - Pathname:', pathname); // DEBUG
-  console.log('🔍 Middleware - Token encontrado:', !!token); // DEBUG
-
-  // Se tem token, verificar se é válido
-  let user = null;
-  if (token) {
-    user = AuthService.verifyToken(token);
-    console.log('🔍 Middleware - Token válido:', !!user, user?.tipo); // DEBUG
-  }
-
-  // Se usuário está logado e tenta acessar páginas de auth, redirecionar para dashboard
-  if (user && AUTH_ROUTES.some(route => pathname.startsWith(route))) {
-    const redirectPath = AuthService.getRedirectPath(user.tipo);
-    return NextResponse.redirect(new URL(redirectPath, request.url));
-  }
-
-  // Verificar se a rota precisa de autenticação
-  const isAdminRoute = pathname.startsWith('/admin');
-  const isModeloRoute = pathname.startsWith('/modelo');
-  const isAssinanteRoute = pathname.startsWith('/assinante');
-
-  // Se não está logado e tenta acessar rota protegida
-  if (!user && (isAdminRoute || isModeloRoute || isAssinanteRoute)) {
-    console.log('🚨 Middleware - Redirecionando para login: usuário não autenticado'); // DEBUG
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-
-  // Se está logado mas tenta acessar rota de outro tipo
-  if (user) {
-    if (isAdminRoute && user.tipo !== 'admin') {
-      return NextResponse.redirect(new URL('/login', request.url));
-    }
-    if (isModeloRoute && user.tipo !== 'modelo') {
-      return NextResponse.redirect(new URL('/login', request.url));
-    }
-    if (isAssinanteRoute && user.tipo !== 'assinante') {
+  // Se tenta acessar área restrita sem login, redirecionar para login
+  if (isAdminRoute || isModeloRoute || isAssinanteRoute) {
+    const token = request.cookies.get('auth_token')?.value;
+    
+    if (!token) {
+      console.log('🚨 Middleware - Redirecionando para login:', pathname);
       return NextResponse.redirect(new URL('/login', request.url));
     }
   }
 
+  // Todas as outras rotas são públicas (/modelos, /modelos-hot, etc)
   return NextResponse.next();
 }
 

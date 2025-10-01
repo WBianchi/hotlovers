@@ -103,45 +103,33 @@ const menuItems = [
     section: "Financeiro", 
     items: [
       {
-        icon: DollarSign,
-        label: "Receitas Gerais",
-        href: "/admin/revenue",
-        color: "text-green-500",
-        badge: null,
-        subItems: [
-          { label: "Visão geral", href: "/admin/revenue" },
-          { label: "Por modelo", href: "/admin/revenue/models" },
-          { label: "Por plano", href: "/admin/revenue/plans" },
-          { label: "Projeções", href: "/admin/revenue/projections" }
-        ]
-      },
-      {
         icon: Percent,
         label: "Minhas Comissões",
-        href: "/admin/my-commissions",
+        href: "/admin/comissoes",
         color: "text-emerald-500",
         badge: "R$ 12K",
         subItems: [
-          { label: "Comissões gerais", href: "/admin/my-commissions" },
-          { label: "De gorjetas", href: "/admin/my-commissions/tips" },
-          { label: "De packs", href: "/admin/my-commissions/packs" },
-          { label: "De assinaturas", href: "/admin/my-commissions/subs" },
-          { label: "De afiliados", href: "/admin/my-commissions/affiliates" }
+          { label: "Visão geral", href: "/admin/comissoes" },
+          { label: "De assinaturas", href: "/admin/comissoes/assinaturas" },
+          { label: "De gorjetas", href: "/admin/comissoes/gorjetas" },
+          { label: "De packs", href: "/admin/comissoes/packs" },
+          { label: "De fotos", href: "/admin/comissoes/fotos" },
+          { label: "De vídeos", href: "/admin/comissoes/videos" }
         ]
       },
       {
         icon: Banknote,
         label: "Pagamentos",
-        href: "/admin/payments", 
+        href: "/admin/pagamentos", 
         color: "text-blue-500",
-        badge: "45"
-      },
-      {
-        icon: Gift,
-        label: "Packs & Produtos",
-        href: "/admin/packs",
-        color: "text-orange-500",
-        badge: "23"
+        badge: "45",
+        subItems: [
+          { label: "Todos pagamentos", href: "/admin/pagamentos" },
+          { label: "Assinaturas", href: "/admin/pagamentos/assinaturas" },
+          { label: "Packs", href: "/admin/pagamentos/packs" },
+          { label: "Gorjetas", href: "/admin/pagamentos/gorjetas" },
+          { label: "Métodos de pagamento", href: "/admin/pagamentos/metodos" }
+        ]
       }
     ]
   },
@@ -150,66 +138,53 @@ const menuItems = [
     items: [
       {
         icon: MessageCircle,
-        label: "Chat ao Vivo",
-        href: "/admin/chat",
+        label: "Chat",
+        href: "/admin/chat-ao-vivo",
         color: "text-cyan-500", 
         badge: "5"
       },
       {
         icon: Zap,
         label: "Integrações",
-        href: "/admin/integrations",
+        href: "/admin/integracoes",
         color: "text-violet-500",
         badge: "5",
         subItems: [
-          { label: "Payment Gateways", href: "/admin/integrations/payments" },
-          { label: "Redes Sociais", href: "/admin/integrations/social" },
-          { label: "Analytics", href: "/admin/integrations/analytics" },
-          { label: "Email Marketing", href: "/admin/integrations/email" },
-          { label: "APIs Externas", href: "/admin/integrations/apis" }
+          { label: "Payment Gateways", href: "/admin/integracoes/pagamentos" },
+          { label: "Redes Sociais", href: "/admin/integracoes/sociais" },
+          { label: "Analytics", href: "/admin/integracoes/analytics" },
+          { label: "Email Marketing", href: "/admin/integracoes/email" },
+          { label: "APIs Externas", href: "/admin/integracoes/apis" }
         ]
       },
       {
         icon: FileText,
         label: "Relatórios",
-        href: "/admin/reports",
+        href: "/admin/relatorios",
         color: "text-indigo-500",
         badge: null,
         subItems: [
-          { label: "Relatório geral", href: "/admin/reports" },
-          { label: "Performance modelos", href: "/admin/reports/models" },
-          { label: "Receitas detalhadas", href: "/admin/reports/revenue" },
-          { label: "Usuários & engajamento", href: "/admin/reports/users" },
-          { label: "Afiliados & conversões", href: "/admin/reports/affiliates" }
+          { label: "Visão geral", href: "/admin/relatorios" },
+          { label: "Acessos", href: "/admin/relatorios/acessos" },
+          { label: "Cadastros", href: "/admin/relatorios/cadastros" },
+          { label: "Vendas de packs", href: "/admin/relatorios/vendas-packs" },
+          { label: "Assinaturas", href: "/admin/relatorios/assinaturas" },
+          { label: "Fotos & vídeos", href: "/admin/relatorios/conteudo" }
         ]
-      },
-      {
-        icon: Bell,
-        label: "Notificações",
-        href: "/admin/notifications",
-        color: "text-yellow-500",
-        badge: null
       },
       {
         icon: Settings,
         label: "Configurações",
-        href: "/admin/settings",
+        href: "/admin/configuracoes",
         color: "text-gray-500",
         badge: null,
         subItems: [
-          { label: "Geral", href: "/admin/settings/general" },
-          { label: "Comissões & taxas", href: "/admin/settings/commissions" },
-          { label: "Pagamentos", href: "/admin/settings/payments" },
-          { label: "Email & templates", href: "/admin/settings/email" },
-          { label: "API & webhooks", href: "/admin/settings/api" }
+          { label: "Geral", href: "/admin/configuracoes/geral" },
+          { label: "Comissões & taxas", href: "/admin/configuracoes/comissoes" },
+          { label: "Pagamentos", href: "/admin/configuracoes/pagamentos" },
+          { label: "Email & templates", href: "/admin/configuracoes/email" },
+          { label: "API & webhooks", href: "/admin/configuracoes/api" }
         ]
-      },
-      {
-        icon: Shield,
-        label: "Segurança",
-        href: "/admin/security",
-        color: "text-red-500",
-        badge: null
       }
     ]
   }
