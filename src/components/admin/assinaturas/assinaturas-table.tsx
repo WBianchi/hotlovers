@@ -150,18 +150,18 @@ export function AssinaturasTable() {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-xl font-bold text-gray-800">Todas as Assinaturas</h3>
-          <p className="text-gray-500 text-sm">{assinaturasData.length} assinaturas encontradas</p>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Todas as Assinaturas</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">{assinaturasData.length} assinaturas encontradas</p>
         </div>
 
         {/* Bulk Actions */}
         {selectedAssinaturas.length > 0 && (
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               {selectedAssinaturas.length} selecionadas
             </span>
             <button className="px-3 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
@@ -181,7 +181,7 @@ export function AssinaturasTable() {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-gray-200">
+            <tr className="border-b border-gray-200 dark:border-gray-700">
               <th className="text-left py-3 px-4">
                 <input
                   type="checkbox"
@@ -190,19 +190,19 @@ export function AssinaturasTable() {
                   className="rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
                 />
               </th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Assinante</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Plano & Status</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Cobrança</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Modelo</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Histórico</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Ações</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Assinante</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Plano & Status</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Cobrança</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Modelo</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Histórico</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Ações</th>
             </tr>
           </thead>
           <tbody>
             {assinaturasData.map((assinatura) => (
               <tr 
                 key={assinatura.id} 
-                className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
+                className={`border-b border-gray-100 dark:border-gray-700 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors ${
                   selectedAssinaturas.includes(assinatura.id) ? 'bg-emerald-50' : ''
                 }`}
               >
@@ -225,8 +225,8 @@ export function AssinaturasTable() {
                       className="w-12 h-12 rounded-xl object-cover ring-2 ring-white"
                     />
                     <div>
-                      <p className="font-semibold text-gray-800">{assinatura.assinante.nome}</p>
-                      <p className="text-sm text-gray-500">{assinatura.assinante.email}</p>
+                      <p className="font-semibold text-gray-800 dark:text-gray-100">{assinatura.assinante.nome}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{assinatura.assinante.email}</p>
                       <p className="text-xs text-gray-400">
                         Cliente desde {new Date(assinatura.inicioAssinatura).toLocaleDateString('pt-BR')}
                       </p>
@@ -242,7 +242,7 @@ export function AssinaturasTable() {
                         <Crown className="w-3 h-3 mr-1" />
                         {assinatura.plano}
                       </span>
-                      <span className="text-sm font-semibold text-gray-800">
+                      <span className="text-sm font-semibold text-gray-800 dark:text-gray-100">
                         R$ {assinatura.preco.toFixed(2)}
                       </span>
                     </div>
@@ -276,7 +276,7 @@ export function AssinaturasTable() {
                       <>
                         <div className="flex items-center space-x-2">
                           <Calendar className="w-3 h-3 text-gray-400" />
-                          <span className="text-sm text-gray-700">
+                          <span className="text-sm text-gray-700 dark:text-gray-300">
                             {new Date(assinatura.proximaCobranca).toLocaleDateString('pt-BR')}
                           </span>
                         </div>
@@ -290,12 +290,12 @@ export function AssinaturasTable() {
                         </p>
                       </>
                     ) : (
-                      <span className="text-sm text-gray-500">Cancelada</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">Cancelada</span>
                     )}
                     
                     <div className="flex items-center space-x-2 mt-1">
                       <CreditCard className="w-3 h-3 text-blue-500" />
-                      <span className="text-xs text-gray-600">{assinatura.metodoPagamento}</span>
+                      <span className="text-xs text-gray-600 dark:text-gray-400">{assinatura.metodoPagamento}</span>
                     </div>
                   </div>
                 </td>
@@ -304,7 +304,7 @@ export function AssinaturasTable() {
                 <td className="py-4 px-4">
                   <div className="flex items-center space-x-2">
                     <Crown className="w-3 h-3 text-hotlovers-red" />
-                    <span className="text-sm text-gray-700">{assinatura.modeloAssinada}</span>
+                    <span className="text-sm text-gray-700 dark:text-gray-300">{assinatura.modeloAssinada}</span>
                   </div>
                 </td>
 
@@ -313,12 +313,12 @@ export function AssinaturasTable() {
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
                       <Users className="w-3 h-3 text-blue-500" />
-                      <span className="text-sm text-gray-700">{assinatura.pagamentosRealizados} pagamentos</span>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">{assinatura.pagamentosRealizados} pagamentos</span>
                     </div>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
                       Total: R$ {assinatura.valorTotalPago.toFixed(2)}
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
                       LTV: R$ {(assinatura.valorTotalPago + (assinatura.preco * 6)).toFixed(2)}
                     </p>
                   </div>
@@ -330,11 +330,11 @@ export function AssinaturasTable() {
                     <button className="w-8 h-8 rounded-lg bg-blue-100 hover:bg-blue-200 flex items-center justify-center transition-colors">
                       <Eye className="w-4 h-4 text-blue-600" />
                     </button>
-                    <button className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
-                      <Edit className="w-4 h-4 text-gray-600" />
+                    <button className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-colors">
+                      <Edit className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                     </button>
-                    <button className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
-                      <MoreHorizontal className="w-4 h-4 text-gray-600" />
+                    <button className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-colors">
+                      <MoreHorizontal className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                     </button>
                   </div>
                 </td>
@@ -345,16 +345,16 @@ export function AssinaturasTable() {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
-        <p className="text-sm text-gray-600">
+      <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           Mostrando {assinaturasData.length} de {assinaturasData.length} assinaturas
         </p>
         <div className="flex items-center space-x-2">
-          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50">
+          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors disabled:opacity-50">
             Anterior
           </button>
           <span className="px-3 py-2 bg-emerald-500 text-white rounded-lg">1</span>
-          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors">
             Próximo
           </button>
         </div>

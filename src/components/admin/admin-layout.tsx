@@ -9,7 +9,7 @@ interface AdminLayoutProps {
 
 export function AdminLayout({ children }: AdminLayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-50/50">
+    <div className="min-h-screen bg-gray-50/50 dark:bg-slate-950 transition-colors">
       {/* Topbar */}
       <AdminTopbar />
       

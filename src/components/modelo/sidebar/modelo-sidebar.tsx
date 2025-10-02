@@ -23,13 +23,6 @@ const menuItems = [
         href: "/modelo/dashboard",
         color: "text-gray-600 dark:text-gray-400",
         badge: null
-      },
-      {
-        icon: TrendingUp,
-        label: "Visão Geral",
-        href: "/modelo/visao-geral", 
-        color: "text-gray-600 dark:text-gray-400",
-        badge: null
       }
     ]
   },
@@ -41,39 +34,21 @@ const menuItems = [
         label: "Fotos",
         href: "/modelo/fotos",
         color: "text-gray-600 dark:text-gray-400",
-        badge: "234",
-        subItems: [
-          { label: "Upload nova foto", href: "/modelo/fotos/upload" },
-          { label: "Gerenciar fotos", href: "/modelo/fotos" },
-          { label: "Álbuns", href: "/modelo/fotos/albums" },
-          { label: "Fotos VIP", href: "/modelo/fotos/vip" }
-        ]
+        badge: "234"
       },
       {
         icon: Video,
         label: "Vídeos",
         href: "/modelo/videos",
         color: "text-gray-600 dark:text-gray-400",
-        badge: "67",
-        subItems: [
-          { label: "Upload novo vídeo", href: "/modelo/videos/upload" },
-          { label: "Gerenciar vídeos", href: "/modelo/videos" },
-          { label: "Lives gravadas", href: "/modelo/videos/lives" },
-          { label: "Vídeos premium", href: "/modelo/videos/premium" }
-        ]
+        badge: "67"
       },
       {
         icon: Package,
         label: "Packs",
         href: "/modelo/packs",
         color: "text-gray-600 dark:text-gray-400", 
-        badge: "12",
-        subItems: [
-          { label: "Criar pack", href: "/modelo/packs/create" },
-          { label: "Gerenciar packs", href: "/modelo/packs" },
-          { label: "Packs populares", href: "/modelo/packs/popular" },
-          { label: "Personalizados", href: "/modelo/packs/custom" }
-        ]
+        badge: "12"
       }
     ]
   },
@@ -85,24 +60,14 @@ const menuItems = [
         label: "Chat ao Vivo",
         href: "/modelo/chat-ao-vivo",
         color: "text-gray-600 dark:text-gray-400",
-        badge: "5",
-        subItems: [
-          { label: "Conversas ativas", href: "/modelo/chat-ao-vivo" },
-          { label: "Mensagens VIP", href: "/modelo/chat-ao-vivo/vip" },
-          { label: "Grupos", href: "/modelo/chat-ao-vivo/groups" }
-        ]
+        badge: "5"
       },
       {
         icon: Users,
         label: "Assinantes",
         href: "/modelo/assinantes",
         color: "text-gray-600 dark:text-gray-400",
-        badge: "1.2K",
-        subItems: [
-          { label: "Todos assinantes", href: "/modelo/assinantes" },
-          { label: "Assinantes VIP", href: "/modelo/assinantes/vip" },
-          { label: "Novos assinantes", href: "/modelo/assinantes/new" }
-        ]
+        badge: "245"
       },
       {
         icon: Heart,
@@ -116,13 +81,6 @@ const menuItems = [
   {
     section: "Financeiro",
     items: [
-      {
-        icon: DollarSign,
-        label: "Receitas",  
-        href: "/modelo/receitas",
-        color: "text-gray-600 dark:text-gray-400",
-        badge: null
-      },
       {
         icon: Wallet,
         label: "Saques",
@@ -165,13 +123,6 @@ const menuItems = [
         icon: User,
         label: "Perfil",
         href: "/modelo/perfil",
-        color: "text-gray-600 dark:text-gray-400",
-        badge: null
-      },
-      {
-        icon: Settings,
-        label: "Configurações",
-        href: "/modelo/configuracoes",
         color: "text-gray-600 dark:text-gray-400",
         badge: null
       }
@@ -217,7 +168,7 @@ export function ModeloSidebar() {
           <div className="flex items-center space-x-3 mb-4">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1494790108755-2616c96d8e42?w=48&h=48&fit=crop&crop=face"
+                src="/image.jpg"
                 alt="Profile"
                 className="w-12 h-12 rounded-xl object-cover"
               />
@@ -257,7 +208,7 @@ export function ModeloSidebar() {
           <div className="flex justify-center">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1494790108755-2616c96d8e42?w=32&h=32&fit=crop&crop=face"
+                src="/image.jpg"
                 alt="Profile"
                 className="w-8 h-8 rounded-lg object-cover"
               />
@@ -270,7 +221,7 @@ export function ModeloSidebar() {
       )}
 
       {/* Navigation Menu */}
-      <nav className="flex-1 overflow-y-auto p-4">
+      <nav className="flex-1 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
         <div className="space-y-6">
           {menuItems.map((section) => (
             <div key={section.section}>
@@ -289,15 +240,9 @@ export function ModeloSidebar() {
                     <div className="relative group">
                       <Link
                         href={item.href}
-                        onClick={item.subItems ? (e) => {
-                          if (isExpanded) {
-                            e.preventDefault();
-                            toggleExpanded(item.label);
-                          }
-                        } : undefined}
                         className={`flex items-center w-full px-3 py-2.5 rounded-lg font-medium transition-all group relative ${
                           isActiveLink(item.href)
-                            ? 'bg-hotlovers-red text-white shadow-sm'
+                            ? 'bg-red-600 text-white shadow-sm'
                             : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white'
                         } ${!isExpanded ? 'justify-center' : 'justify-between'}`}
                         title={!isExpanded ? item.label : undefined}
@@ -309,28 +254,14 @@ export function ModeloSidebar() {
                           {isExpanded && <span>{item.label}</span>}
                         </div>
                         
-                        {isExpanded && (
-                          <div className="flex items-center space-x-2">
-                            {/* Badge */}
-                            {item.badge && (
-                              <span className={`px-2 py-0.5 text-xs font-bold rounded-full ${
-                                isActiveLink(item.href)
-                                  ? 'bg-white/20 text-white'
-                                  : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-                              }`}>
-                                {item.badge}
-                              </span>
-                            )}
-                            
-                            {/* Expand Arrow */}
-                            {item.subItems && (
-                              <ChevronDown className={`w-4 h-4 transition-transform ${
-                                isItemExpanded(item.label) ? 'rotate-180' : ''
-                              } ${
-                                isActiveLink(item.href) ? 'text-white' : 'text-gray-400 dark:text-gray-500'
-                              }`} />
-                            )}
-                          </div>
+                        {isExpanded && item.badge && (
+                          <span className={`px-2 py-0.5 text-xs font-bold rounded-full ${
+                            isActiveLink(item.href)
+                              ? 'bg-white/20 text-white'
+                              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                          }`}>
+                            {item.badge}
+                          </span>
                         )}
                       </Link>
 
@@ -339,32 +270,13 @@ export function ModeloSidebar() {
                         <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-black dark:bg-white text-white dark:text-black px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
                           {item.label}
                           {item.badge && (
-                            <span className="ml-2 px-1.5 py-0.5 bg-hotlovers-red text-white rounded-full text-xs">
+                            <span className="ml-2 px-1.5 py-0.5 bg-red-600 text-white rounded-full text-xs">
                               {item.badge}
                             </span>
                           )}
                         </div>
                       )}
                     </div>
-
-                    {/* Sub Items - Only show when expanded and item is expanded */}
-                    {item.subItems && isExpanded && isItemExpanded(item.label) && (
-                      <div className="ml-8 mt-2 space-y-1">
-                        {item.subItems.map((subItem) => (
-                          <Link
-                            key={subItem.href}
-                            href={subItem.href}
-                            className={`block px-3 py-2 text-sm rounded-lg transition-colors ${
-                              pathname === subItem.href
-                                ? 'bg-hotlovers-red/10 text-hotlovers-red font-medium'
-                                : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white'
-                            }`}
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>

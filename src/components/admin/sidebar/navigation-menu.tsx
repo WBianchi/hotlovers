@@ -215,7 +215,7 @@ export function NavigationMenu({ isExpanded }: NavigationMenuProps) {
           {/* Section Header */}
           {isExpanded && (
             <div className="px-3 py-2">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 {section.section}
               </p>
             </div>
@@ -230,7 +230,7 @@ export function NavigationMenu({ isExpanded }: NavigationMenuProps) {
                   <Link
                     href={item.href}
                     onClick={() => item.subItems && toggleExpanded(item.label)}
-                    className={`flex items-center justify-between w-full px-3 py-3 rounded-xl transition-all duration-200 hover:bg-gray-50 group ${
+                    className={`flex items-center justify-between w-full px-3 py-3 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 group ${
                       isActive(item.href) 
                         ? 'bg-hotlovers-red/5 border border-hotlovers-red/20' 
                         : 'hover:scale-105'
@@ -241,7 +241,7 @@ export function NavigationMenu({ isExpanded }: NavigationMenuProps) {
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all ${
                         isActive(item.href) 
                           ? 'bg-hotlovers-gradient shadow-lg' 
-                          : 'bg-gray-100 group-hover:bg-gray-200 group-hover:scale-110'
+                          : 'bg-gray-100 dark:bg-gray-700 group-hover:bg-gray-200 dark:hover:bg-gray-600 dark:group-hover:bg-gray-600 group-hover:scale-110'
                       }`}>
                         <item.icon className={`w-4 h-4 transition-colors ${
                           isActive(item.href) ? 'text-white' : item.color
@@ -251,7 +251,7 @@ export function NavigationMenu({ isExpanded }: NavigationMenuProps) {
                       {/* Label */}
                       {isExpanded && (
                         <span className={`font-medium truncate transition-colors ${
-                          isActive(item.href) ? 'text-hotlovers-red' : 'text-gray-700 group-hover:text-gray-900'
+                          isActive(item.href) ? 'text-hotlovers-red' : 'text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100'
                         }`}>
                           {item.label}
                         </span>
@@ -276,7 +276,7 @@ export function NavigationMenu({ isExpanded }: NavigationMenuProps) {
 
                         {/* Expand Icon */}
                         {item.subItems && (
-                          <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${
+                          <ChevronDown className={`w-4 h-4 text-gray-400 dark:text-gray-500 transition-transform ${
                             expandedItems.includes(item.label) ? 'rotate-180' : ''
                           }`} />
                         )}
@@ -300,7 +300,7 @@ export function NavigationMenu({ isExpanded }: NavigationMenuProps) {
                         className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
                           isActive(subItem.href)
                             ? 'text-hotlovers-red bg-hotlovers-red/5 font-medium'
-                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800'
                         }`}
                       >
                         {subItem.label}

@@ -126,13 +126,11 @@ export function ModeloDashboardContent() {
         <div className="flex items-center space-x-6">
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1494790108755-2616c96d8e42?w=80&h=80&fit=crop&crop=face"
+              src="/image.jpg"
               alt="Profile"
-              className="w-20 h-20 rounded-xl object-cover"
+              className="w-20 h-20 rounded-full object-cover ring-4 ring-white dark:ring-gray-800 shadow-xl"
             />
-            <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-hotlovers-red rounded-full flex items-center justify-center border-4 border-white dark:border-gray-800">
-              <FaCrown className="w-3 h-3 text-white" />
-            </div>
+            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-4 border-white dark:border-gray-800"></div>
           </div>
           <div className="flex-1">
             <h1 className="text-4xl font-black text-black dark:text-white mb-2">

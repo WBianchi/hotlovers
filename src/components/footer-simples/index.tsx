@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Instagram, Facebook, Youtube } from "lucide-react";
+import { FaFire } from "react-icons/fa";
 
 interface FooterSimplesProps {
   className?: string;
@@ -35,18 +36,17 @@ export function FooterSimples({ className }: FooterSimplesProps) {
         <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="bg-hotlovers-red p-2 rounded-full">
-              <span className="text-white font-black text-lg">🔥</span>
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
+              <FaFire className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-black text-lg">
-                <span className="text-hotlovers-red">Hot</span>
-                <span className="text-foreground">Lovers</span>
+              <h3 className="text-xl font-black">
+                <span className="text-red-600">Hot</span>
+                <span className="text-gray-800 dark:text-gray-100">Lovers</span>
               </h3>
-              <p className="text-xs text-muted-foreground">Premium Content</p>
             </div>
-          </div>
+          </Link>
 
           {/* Links rápidos */}
           <div className="flex items-center space-x-6 text-sm">

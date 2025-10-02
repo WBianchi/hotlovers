@@ -57,7 +57,7 @@ const activities = [
 
 export function RecentActivity() {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -65,8 +65,8 @@ export function RecentActivity() {
             <Activity className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Atividade Recente</h3>
-            <p className="text-gray-500 text-sm">Últimas ações no sistema</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Atividade Recente</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Últimas ações no sistema</p>
           </div>
         </div>
         
@@ -80,7 +80,7 @@ export function RecentActivity() {
         {activities.map((activity) => (
           <div
             key={activity.id}
-            className="flex items-start space-x-4 p-3 rounded-xl hover:bg-gray-50 transition-all duration-200 group cursor-pointer"
+            className="flex items-start space-x-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-all duration-200 group cursor-pointer"
           >
             {/* Icon */}
             <div className={`w-10 h-10 rounded-xl ${activity.bgColor} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
@@ -89,16 +89,16 @@ export function RecentActivity() {
 
             {/* Content */}
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-gray-800 group-hover:text-gray-900 transition-colors">
+              <p className="font-semibold text-gray-800 dark:text-gray-100 dark:text-gray-100 group-hover:text-gray-900 transition-colors">
                 {activity.title}
               </p>
-              <p className="text-sm text-gray-600 mt-0.5 line-clamp-1">
+              <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-400 mt-0.5 line-clamp-1">
                 {activity.description}
               </p>
               
               <div className="flex items-center space-x-1 mt-1">
                 <Clock className="w-3 h-3 text-gray-400" />
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-gray-500 dark:text-gray-400">
                   {activity.time}
                 </span>
               </div>
@@ -111,7 +111,7 @@ export function RecentActivity() {
       </div>
 
       {/* Footer */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="flex items-center justify-between text-sm">
           <span className="text-gray-500">
             {activities.length} atividades hoje

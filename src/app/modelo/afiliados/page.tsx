@@ -1,12 +1,12 @@
+"use client";
+
+import { ModeloLayout } from "../../../components/modelo/modelo-layout";
+import { AfiliadosContent } from "../../../components/modelo/afiliados/afiliados-content";
+
 export default function ModeloAfiliadosPage() {
   return (
-    <div className="min-h-screen">
-      <h1 className="text-4xl font-bold text-center py-20">
-        📄 modelo - afiliados
-      </h1>
-      <p className="text-center text-muted-foreground">
-        Página: modelo - afiliados
-      </p>
-    </div>
+    <ModeloLayout>
+      <AfiliadosContent />
+    </ModeloLayout>
   );
 }

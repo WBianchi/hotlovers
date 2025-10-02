@@ -47,7 +47,7 @@ export function StatsGrid() {
       {stats.map((stat, index) => (
         <div
           key={stat.label}
-          className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50 hover:shadow-lg transition-all duration-300 hover:scale-105 group relative overflow-hidden"
+          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 hover:scale-105 group relative overflow-hidden"
         >
           {/* Background Gradient */}
           <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${stat.bgGradient} opacity-5 rounded-full -translate-y-16 translate-x-16 group-hover:opacity-10 transition-opacity`}></div>
@@ -77,16 +77,16 @@ export function StatsGrid() {
 
             {/* Value */}
             <div className="mb-2">
-              <h3 className="text-3xl font-black text-gray-800 group-hover:text-gray-900 transition-colors">
+              <h3 className="text-3xl font-black text-gray-800 dark:text-gray-100 dark:text-gray-100 group-hover:text-gray-900 transition-colors">
                 {stat.value}
               </h3>
-              <p className="text-gray-600 font-medium">
+              <p className="text-gray-600 dark:text-gray-400 font-medium">
                 {stat.label}
               </p>
             </div>
 
             {/* Footer */}
-            <div className="text-xs text-gray-500">
+            <div className="text-xs text-gray-500 dark:text-gray-400">
               {stat.trend === 'up' ? '↗' : '↘'} vs mês anterior
             </div>
           </div>

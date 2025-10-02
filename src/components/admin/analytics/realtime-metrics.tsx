@@ -72,7 +72,7 @@ export function RealtimeMetrics() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -80,8 +80,8 @@ export function RealtimeMetrics() {
             <Activity className="w-5 h-5 text-white animate-pulse" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Métricas em Tempo Real</h3>
-            <p className="text-gray-500 text-sm">Atualizações a cada 5 segundos</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Métricas em Tempo Real</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Atualizações a cada 5 segundos</p>
           </div>
         </div>
         
@@ -96,7 +96,7 @@ export function RealtimeMetrics() {
         {realtimeCards.map((card, index) => (
           <div
             key={card.label}
-            className="p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-all duration-200 hover:scale-105 group cursor-pointer relative overflow-hidden"
+            className="p-4 rounded-xl bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105 group cursor-pointer relative overflow-hidden"
           >
             {/* Pulse Animation */}
             <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-white to-gray-100 opacity-50 rounded-full -translate-y-6 translate-x-6 group-hover:opacity-100 transition-opacity"></div>
@@ -108,13 +108,13 @@ export function RealtimeMetrics() {
 
             {/* Value */}
             <div className="space-y-1">
-              <p className="text-2xl font-black text-gray-800 group-hover:text-gray-900 transition-colors">
+              <p className="text-2xl font-black text-gray-800 dark:text-gray-100 dark:text-gray-100 group-hover:text-gray-900 transition-colors">
                 {card.format === 'currency' 
                   ? `R$ ${card.value.toFixed(2)}` 
                   : card.value.toLocaleString()}
                 {card.suffix}
               </p>
-              <p className="text-xs text-gray-600 font-medium">
+              <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-400 font-medium">
                 {card.label}
               </p>
             </div>
@@ -126,7 +126,7 @@ export function RealtimeMetrics() {
       </div>
 
       {/* Footer */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="flex items-center justify-between text-sm">
           <span className="text-gray-500">
             Dados coletados dos últimos 5 minutos

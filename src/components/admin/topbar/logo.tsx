@@ -16,7 +16,7 @@ export function AdminLogo() {
         <div className="absolute inset-0 bg-hotlovers-gradient rounded-xl opacity-75 animate-ping group-hover:animate-pulse"></div>
         
         {/* Admin Badge */}
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
+        <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800">
           <Shield className="w-2 h-2 text-white" />
         </div>
       </div>
@@ -29,7 +29,7 @@ export function AdminLogo() {
           </span>
           <FaFire className="w-4 h-4 text-hotlovers-red animate-pulse" />
         </div>
-        <span className="text-xs font-medium text-gray-500 tracking-wide uppercase">
+        <span className="text-xs font-medium text-gray-500 dark:text-gray-400 tracking-wide uppercase">
           Admin Panel
         </span>
       </div>

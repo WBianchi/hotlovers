@@ -77,7 +77,7 @@ export function IntegracoesCards() {
       {integrations.map((integration) => (
         <div
           key={integration.id}
-          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
+          className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
         >
           {/* Background Gradient */}
           <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${integration.bgGradient} opacity-5 rounded-full -translate-y-32 translate-x-32 group-hover:opacity-10 transition-opacity`}></div>
@@ -92,8 +92,8 @@ export function IntegracoesCards() {
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-black text-gray-800 dark:text-gray-100">{integration.nome}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{integration.descricao}</p>
+                  <h3 className="text-xl font-black text-gray-800 dark:text-gray-100 dark:text-gray-100">{integration.nome}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">{integration.descricao}</p>
                 </div>
               </div>
 
@@ -108,7 +108,7 @@ export function IntegracoesCards() {
                     integration.ativo ? 'bg-green-500' : 'bg-gray-300'
                   }`}
                 >
-                  <div className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full transition-transform ${
+                  <div className={`absolute top-1 left-1 w-5 h-5 bg-white dark:bg-gray-800 rounded-full transition-transform ${
                     integration.ativo ? 'translate-x-7' : 'translate-x-0'
                   }`}></div>
                 </button>
@@ -123,7 +123,7 @@ export function IntegracoesCards() {
                   <span>Conectado</span>
                 </div>
               ) : (
-                <div className="flex items-center space-x-2 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full text-sm font-semibold">
+                <div className="flex items-center space-x-2 px-3 py-1 bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 text-gray-500 dark:text-gray-400 dark:text-gray-400 rounded-full text-sm font-semibold">
                   <XCircle className="w-4 h-4" />
                   <span>Desconectado</span>
                 </div>
@@ -134,7 +134,7 @@ export function IntegracoesCards() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {integration.campos.map((campo, index) => (
                 <div key={index} className="space-y-2">
-                  <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center space-x-2">
+                  <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 dark:text-gray-300 flex items-center space-x-2">
                     <Key className="w-3 h-3 text-gray-400" />
                     <span>{campo.label}</span>
                   </label>
@@ -145,8 +145,8 @@ export function IntegracoesCards() {
                     disabled={!integration.ativo}
                     className={`w-full px-4 py-2 rounded-lg border transition-all ${
                       integration.ativo
-                        ? 'border-gray-300 bg-white focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20'
-                        : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-400 cursor-not-allowed'
+                        ? 'border-gray-300 bg-white dark:bg-gray-800 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20'
+                        : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 text-gray-400 dark:text-gray-500 cursor-not-allowed'
                     }`}
                   />
                 </div>

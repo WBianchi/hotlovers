@@ -4,7 +4,7 @@ import { Settings, Save } from "lucide-react";
 
 export function ConfiguracoesHeader() {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50">
+    <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700/50 dark:border-gray-700/50">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="relative">
@@ -14,10 +14,10 @@ export function ConfiguracoesHeader() {
           </div>
 
           <div>
-            <h1 className="text-3xl font-black text-gray-800 dark:text-gray-100">
+            <h1 className="text-3xl font-black text-gray-800 dark:text-gray-100 dark:text-gray-100">
               Configurações
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 text-lg">
+            <p className="text-gray-500 dark:text-gray-400 dark:text-gray-400 text-lg">
               Configure taxas, comissões e parâmetros da plataforma ⚙️
             </p>
           </div>

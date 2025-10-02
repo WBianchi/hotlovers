@@ -5,56 +5,28 @@ import { FooterSimples } from "@/components/footer-simples";
 import { Carrossel } from "@/components/pages/inicio/carrossel";
 import { CookiesBanner } from "@/components/cookies-banner";
 import { ChatFlutuante } from "@/components/chat-flutuante";
+import { useEffect, useState } from "react";
 
 import Link from "next/link";
-import { Zap, ChevronLeft, ChevronRight } from "lucide-react";
+import { Zap, ChevronLeft, ChevronRight, Crown } from "lucide-react";
+
+interface Modelo {
+  id: string;
+  nome: string;
+  nomeArtistico: string | null;
+  foto: string | null;
+  precoMensal: number;
+  verificada: boolean;
+  destaque: boolean;
+  cidade: string;
+  estado: string;
+}
 
 // Componente CarrosselPersonalizado 
-function CarrosselPersonalizado({ titulo, subtitulo }: { titulo: string; subtitulo: string }) {
-  const modelos = [
-    {
-      id: 1,
-      nome: "Isabella Santos",
-      foto: "https://images.unsplash.com/photo-1494790108755-2616b612b5ab?w=400&h=300&fit=crop&crop=face",
-      premium: true,
-      online: true
-    },
-    {
-      id: 2,
-      nome: "Amanda Silva", 
-      foto: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=300&fit=crop&crop=face",
-      premium: false,
-      online: true
-    },
-    {
-      id: 3,
-      nome: "Sophia Rodriguez",
-      foto: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=300&fit=crop&crop=face", 
-      premium: true,
-      online: false
-    },
-    {
-      id: 4,
-      nome: "Valentina Costa",
-      foto: "https://images.unsplash.com/photo-1518577915332-c2a19f149a75?w=400&h=300&fit=crop&crop=face",
-      premium: false,
-      online: true
-    },
-    {
-      id: 5,
-      nome: "Mia Johnson",
-      foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face",
-      premium: true,
-      online: true
-    },
-    {
-      id: 6,
-      nome: "Luna Martinez",
-      foto: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&h=300&fit=crop&crop=face",
-      premium: false,
-      online: false
-    }
-  ];
+function CarrosselPersonalizado({ titulo, subtitulo, modelos }: { titulo: string; subtitulo: string; modelos: Modelo[] }) {
+  if (!modelos || modelos.length === 0) {
+    return null;
+  }
 
   return (
     <section className="py-12 bg-background">
@@ -89,8 +61,8 @@ function CarrosselPersonalizado({ titulo, subtitulo }: { titulo: string; subtitu
                 className="relative flex-shrink-0 w-64 h-80 rounded-2xl overflow-hidden group cursor-pointer hover:scale-105 transition-transform duration-300 block"
               >
                 <img
-                  src={modelo.foto}
-                  alt={modelo.nome}
+                  src={modelo.foto || 'https://images.unsplash.com/photo-1494790108755-2616b612b789?w=400&h=600&fit=crop&crop=face'}
+                  alt={modelo.nomeArtistico || modelo.nome}
                   className="w-full h-full object-cover"
                 />
                 
@@ -99,35 +71,29 @@ function CarrosselPersonalizado({ titulo, subtitulo }: { titulo: string; subtitu
                 
                 {/* Status badges */}
                 <div className="absolute top-3 left-3 flex items-center space-x-2">
-                  {modelo.online && (
-                    <div className="flex items-center space-x-1 px-2 py-1 bg-hotlovers-red rounded-full text-xs text-white font-medium">
-                      <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                      <span>Online</span>
+                  {modelo.verificada && (
+                    <div className="w-6 h-6 bg-black/80 rounded-full flex items-center justify-center">
+                      <Crown className="w-3 h-3 text-yellow-500" />
                     </div>
                   )}
-                  {modelo.premium && (
-                    <div className="w-6 h-6 bg-black/80 rounded-full flex items-center justify-center">
-                      <Zap className="w-3 h-3 text-hotlovers-red" />
+                  {modelo.destaque && (
+                    <div className="px-2 py-1 bg-red-600 rounded-full text-xs text-white font-bold">
+                      ⭐ Destaque
                     </div>
                   )}
                 </div>
 
                 {/* Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 className="font-bold text-lg mb-2">{modelo.nome}</h3>
+                  <h3 className="font-bold text-lg mb-1">{modelo.nomeArtistico || modelo.nome}</h3>
+                  <p className="text-xs opacity-90 mb-2">{modelo.cidade}, {modelo.estado}</p>
                   <div className="flex items-center space-x-2">
-                    <Link 
-                      href={`/modelos/${modelo.id}`}
-                      className="flex-1 py-2 bg-white/20 rounded-lg backdrop-blur-sm hover:bg-white/30 transition-all text-sm font-medium text-center block"
-                    >
+                    <div className="flex-1 py-2 bg-white/20 rounded-lg backdrop-blur-sm text-sm font-medium text-center">
+                      R$ {modelo.precoMensal.toFixed(2)}/mês
+                    </div>
+                    <div className="px-4 py-2 bg-gradient-to-br from-red-600 to-red-700 rounded-lg text-sm font-medium text-white">
                       Ver Perfil
-                    </Link>
-                    <Link 
-                      href={`/modelos/${modelo.id}`}
-                      className="px-4 py-2 bg-hotlovers-gradient rounded-lg hover:scale-105 transition-all text-sm font-medium text-white block"
-                    >
-                      Chat
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -141,13 +107,48 @@ function CarrosselPersonalizado({ titulo, subtitulo }: { titulo: string; subtitu
 
 
 export default function ModelosPage() {
-  // Exemplo de usuário logado (depois virá do contexto de auth)
-  const usuarioExemplo = {
-    nome: "João Silva",
-    email: "joao@email.com", 
-    foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-    tipo: "assinante" as const
-  };
+  const [modelosDestaque, setModelosDestaque] = useState<Modelo[]>([]);
+  const [modelosNovos, setModelosNovos] = useState<Modelo[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchModelos() {
+      try {
+        // Buscar modelos em destaque
+        const resDestaque = await fetch('/api/modelos?destaque=true');
+        const dataDestaque = await resDestaque.json();
+        
+        // Buscar todas as modelos (para novas)
+        const resNovos = await fetch('/api/modelos?limit=10');
+        const dataNovos = await resNovos.json();
+
+        if (dataDestaque.success) {
+          setModelosDestaque(dataDestaque.modelos);
+        }
+        
+        if (dataNovos.success) {
+          setModelosNovos(dataNovos.modelos);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar modelos:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchModelos();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400">Carregando modelos...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -158,16 +159,22 @@ export default function ModelosPage() {
         <Carrossel />
 
         {/* Carrossel 2 - Modelos em Destaque */}
-        <CarrosselPersonalizado 
-          titulo="⭐ Modelos em Destaque"
-          subtitulo="As mais populares e bem avaliadas da plataforma"
-        />
+        {modelosDestaque.length > 0 && (
+          <CarrosselPersonalizado 
+            titulo="⭐ Modelos em Destaque"
+            subtitulo="As mais populares e bem avaliadas da plataforma"
+            modelos={modelosDestaque}
+          />
+        )}
 
         {/* Carrossel 3 - Novas Modelos */}
-        <CarrosselPersonalizado 
-          titulo="🆕 Novas Modelos"  
-          subtitulo="Recém-chegadas e esperando por você"
-        />
+        {modelosNovos.length > 0 && (
+          <CarrosselPersonalizado 
+            titulo="🆕 Novas Modelos"  
+            subtitulo="Recém-chegadas e esperando por você"
+            modelos={modelosNovos}
+          />
+        )}
 
       </main>
 

@@ -31,20 +31,20 @@ export function TopPerformers() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       <div className="flex items-center space-x-3 mb-6">
         <div className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center">
           <Crown className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-gray-800">Top Performers</h3>
-          <p className="text-gray-500 text-sm">Modelos com melhor desempenho</p>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Top Performers</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Modelos com melhor desempenho</p>
         </div>
       </div>
 
       <div className="space-y-4">
         {performers.map((performer, index) => (
-          <div key={performer.name} className="flex items-center space-x-4 p-3 rounded-xl hover:bg-gray-50 transition-colors">
+          <div key={performer.name} className="flex items-center space-x-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors">
             {/* Rank */}
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm ${
               index === 0 ? 'bg-yellow-100 text-yellow-700' :
@@ -63,8 +63,8 @@ export function TopPerformers() {
 
             {/* Info */}
             <div className="flex-1">
-              <p className="font-semibold text-gray-800">{performer.name}</p>
-              <div className="flex items-center space-x-3 text-xs text-gray-600">
+              <p className="font-semibold text-gray-800 dark:text-gray-100">{performer.name}</p>
+              <div className="flex items-center space-x-3 text-xs text-gray-600 dark:text-gray-400">
                 <span>R$ {(performer.revenue / 1000).toFixed(1)}K</span>
                 <span>•</span>
                 <span>{(performer.clicks / 1000).toFixed(1)}K cliques</span>

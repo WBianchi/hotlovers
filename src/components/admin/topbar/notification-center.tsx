@@ -75,9 +75,9 @@ export function NotificationCenter() {
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-200 hover:scale-105 group relative"
+        className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-all duration-200 hover:scale-105 group relative"
       >
-        <Bell className="w-5 h-5 text-gray-600 group-hover:text-hotlovers-red transition-colors" />
+        <Bell className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-hotlovers-red transition-colors" />
         
         {/* Badge */}
         {unreadCount > 0 && (
@@ -104,7 +104,7 @@ export function NotificationCenter() {
           />
           
           {/* Panel */}
-          <div className="absolute top-12 right-0 z-20 bg-white rounded-2xl shadow-2xl border border-gray-200/50 w-96 backdrop-blur-lg animate-in slide-in-from-top-2 duration-200">
+          <div className="absolute top-12 right-0 z-20 bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 w-96 backdrop-blur-lg animate-in slide-in-from-top-2 duration-200">
             
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
@@ -127,7 +127,7 @@ export function NotificationCenter() {
                     Marcar todas como lidas
                   </button>
                 )}
-                <button className="w-6 h-6 rounded-lg hover:bg-gray-100 flex items-center justify-center">
+                <button className="w-6 h-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center">
                   <Settings className="w-3 h-3 text-gray-500" />
                 </button>
               </div>
@@ -145,7 +145,7 @@ export function NotificationCenter() {
                   {notificationList.map((notification) => (
                     <div
                       key={notification.id}
-                      className={`group relative flex items-start space-x-3 p-3 rounded-xl transition-all duration-200 hover:bg-gray-50 ${
+                      className={`group relative flex items-start space-x-3 p-3 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800 ${
                         notification.unread ? 'bg-hotlovers-red/5' : ''
                       }`}
                     >
@@ -165,11 +165,11 @@ export function NotificationCenter() {
                           )}
                         </div>
                         
-                        <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 line-clamp-2">
                           {notification.message}
                         </p>
                         
-                        <p className="text-xs text-gray-400 mt-1">
+                        <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                           {notification.time}
                         </p>
                       </div>

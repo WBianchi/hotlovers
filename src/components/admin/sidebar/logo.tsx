@@ -8,7 +8,7 @@ interface SidebarLogoProps {
 
 export function SidebarLogo({ isExpanded }: SidebarLogoProps) {
   return (
-    <div className="p-6 border-b border-gray-100">
+    <div className="p-6 border-b border-gray-100 dark:border-gray-700 dark:border-gray-700">
       <div className="flex items-center space-x-3 group cursor-pointer">
         {/* Logo Icon */}
         <div className="relative">
@@ -20,8 +20,8 @@ export function SidebarLogo({ isExpanded }: SidebarLogoProps) {
           <div className="absolute inset-0 bg-hotlovers-gradient rounded-2xl opacity-75 animate-ping group-hover:animate-pulse"></div>
           
           {/* Admin Badge */}
-          <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+          <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800 dark:border-gray-800">
+            <div className="w-2 h-2 bg-white dark:bg-gray-800 rounded-full animate-pulse"></div>
           </div>
         </div>
 
@@ -31,11 +31,11 @@ export function SidebarLogo({ isExpanded }: SidebarLogoProps) {
             <div className="flex items-center space-x-1">
               <span className="text-2xl font-black">
                 <span className="text-hotlovers-red">Hot</span>
-                <span className="text-gray-800">Lovers</span>
+                <span className="text-gray-800 dark:text-gray-100">Lovers</span>
               </span>
               <FaFire className="w-5 h-5 text-hotlovers-red animate-bounce" />
             </div>
-            <span className="text-xs font-semibold text-gray-500 tracking-wide uppercase">
+            <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 dark:text-gray-400 tracking-wide uppercase">
               Painel Administrativo
             </span>
           </div>

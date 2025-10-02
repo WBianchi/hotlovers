@@ -17,7 +17,7 @@ export function ComissionsChart() {
   const totalPending = commissionsData.reduce((sum, d) => sum + d.pending, 0);
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -25,8 +25,8 @@ export function ComissionsChart() {
             <DollarSign className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Comissões por Mês</h3>
-            <p className="text-gray-500 text-sm">Pagas vs Pendentes - últimos 6 meses</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Comissões por Mês</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Pagas vs Pendentes - últimos 6 meses</p>
           </div>
         </div>
         
@@ -73,7 +73,7 @@ export function ComissionsChart() {
             </div>
             
             {/* Label */}
-            <p className="text-xs text-gray-600 mt-2 font-medium">
+            <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-400 mt-2 font-medium">
               {data.month}
             </p>
             <p className="text-xs text-gray-400">
@@ -84,14 +84,14 @@ export function ComissionsChart() {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-100">
+      <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-          <span className="text-sm text-gray-600">Comissões Pagas</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">Comissões Pagas</span>
         </div>
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-          <span className="text-sm text-gray-600">Comissões Pendentes</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">Comissões Pendentes</span>
         </div>
       </div>
 

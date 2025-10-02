@@ -40,7 +40,7 @@ export function PlansOverview() {
   const totalRevenue = plans.reduce((sum, plan) => sum + plan.revenue, 0);
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -48,19 +48,19 @@ export function PlansOverview() {
             <Crown className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Visão Geral dos Planos</h3>
-            <p className="text-gray-500 text-sm">Performance dos planos de assinatura</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Visão Geral dos Planos</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Performance dos planos de assinatura</p>
           </div>
         </div>
         
         <div className="flex items-center space-x-4">
           <div className="text-center">
-            <p className="text-2xl font-bold text-gray-800">{totalSubscribers}</p>
-            <p className="text-xs text-gray-500">Total Assinantes</p>
+            <p className="text-2xl font-bold text-gray-800 dark:text-gray-100">{totalSubscribers}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Total Assinantes</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-green-600">R$ {(totalRevenue / 1000).toFixed(1)}K</p>
-            <p className="text-xs text-gray-500">Receita Total</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Receita Total</p>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ export function PlansOverview() {
         {plans.map((plan, index) => (
           <div
             key={plan.name}
-            className="relative p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 hover:scale-105 group overflow-hidden"
+            className="relative p-6 rounded-2xl border-2 border-gray-200 dark:border-gray-700 dark:border-gray-700 hover:border-gray-300 transition-all duration-300 hover:scale-105 group overflow-hidden"
           >
             {/* Background Gradient */}
             <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${plan.bgGradient} opacity-10 rounded-full -translate-y-10 translate-x-10 group-hover:opacity-20 transition-opacity`}></div>
@@ -85,19 +85,19 @@ export function PlansOverview() {
                 </div>
                 
                 <div className="text-right">
-                  <p className="text-2xl font-black text-gray-800">{plan.price}</p>
-                  <p className="text-xs text-gray-500">/mês</p>
+                  <p className="text-2xl font-black text-gray-800 dark:text-gray-100">{plan.price}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">/mês</p>
                 </div>
               </div>
 
-              <h4 className="text-xl font-bold text-gray-800 mb-2">{plan.name}</h4>
+              <h4 className="text-xl font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100 mb-2">{plan.name}</h4>
 
               {/* Stats */}
               <div className="space-y-3 mb-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Assinantes</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">Assinantes</span>
                   <div className="flex items-center space-x-2">
-                    <span className="font-semibold text-gray-800">{plan.subscribers}</span>
+                    <span className="font-semibold text-gray-800 dark:text-gray-100">{plan.subscribers}</span>
                     <div className="flex items-center space-x-1 px-2 py-0.5 bg-green-100 rounded-full">
                       <TrendingUp className="w-3 h-3 text-green-600" />
                       <span className="text-xs font-medium text-green-700">+{plan.growth}%</span>
@@ -106,15 +106,15 @@ export function PlansOverview() {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Receita</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">Receita</span>
                   <span className="font-semibold text-green-600">
                     R$ {(plan.revenue / 1000).toFixed(1)}K
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">% do Total</span>
-                  <span className="font-semibold text-gray-800">
+                  <span className="text-sm text-gray-600 dark:text-gray-400">% do Total</span>
+                  <span className="font-semibold text-gray-800 dark:text-gray-100">
                     {((plan.subscribers / totalSubscribers) * 100).toFixed(1)}%
                   </span>
                 </div>
@@ -122,7 +122,7 @@ export function PlansOverview() {
 
               {/* Progress Bar */}
               <div className="mb-4">
-                <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="w-full h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
                   <div 
                     className={`h-full bg-gradient-to-r ${plan.bgGradient} transition-all duration-1000`}
                     style={{ width: `${(plan.subscribers / totalSubscribers) * 100}%` }}
@@ -132,11 +132,11 @@ export function PlansOverview() {
 
               {/* Features */}
               <div className="space-y-2">
-                <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Recursos</p>
+                <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 dark:text-gray-400 uppercase tracking-wide">Recursos</p>
                 {plan.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center space-x-2">
                     <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${plan.bgGradient}`}></div>
-                    <span className="text-xs text-gray-600">{feature}</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -149,25 +149,25 @@ export function PlansOverview() {
       </div>
 
       {/* Summary */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
             <p className="text-lg font-bold text-blue-600">{plans[0].subscribers}</p>
-            <p className="text-xs text-gray-500">Básico</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Básico</p>
           </div>
           <div className="text-center">
             <p className="text-lg font-bold text-purple-600">{plans[1].subscribers}</p>
-            <p className="text-xs text-gray-500">Premium</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Premium</p>
           </div>
           <div className="text-center">
             <p className="text-lg font-bold text-yellow-600">{plans[2].subscribers}</p>
-            <p className="text-xs text-gray-500">VIP</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">VIP</p>
           </div>
           <div className="text-center">
             <p className="text-lg font-bold text-green-600">
               {(plans.reduce((sum, p) => sum + p.growth, 0) / plans.length).toFixed(1)}%
             </p>
-            <p className="text-xs text-gray-500">Crescimento Médio</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Crescimento Médio</p>
           </div>
         </div>
       </div>

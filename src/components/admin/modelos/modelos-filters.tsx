@@ -41,15 +41,15 @@ export function ModelosFilters() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center space-x-3 mb-6">
         <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
           <Filter className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-gray-800">Filtros e Categorias</h3>
-          <p className="text-gray-500 text-sm">Organize e filtre suas modelos</p>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Filtros e Categorias</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Organize e filtre suas modelos</p>
         </div>
       </div>
 
@@ -64,8 +64,8 @@ export function ModelosFilters() {
                 ? tab.color === 'green' ? 'bg-green-100 text-green-700 border border-green-200' :
                   tab.color === 'yellow' ? 'bg-yellow-100 text-yellow-700 border border-yellow-200' :
                   tab.color === 'red' ? 'bg-red-100 text-red-700 border border-red-200' :
-                  'bg-gray-100 text-gray-700 border border-gray-200'
-                : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                  'bg-gray-100 text-gray-700 dark:text-gray-300 dark:text-gray-300 border border-gray-200'
+                : 'bg-gray-50 text-gray-600 dark:text-gray-400 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:bg-gray-700'
             }`}
           >
             <span>{tab.label}</span>
@@ -84,7 +84,7 @@ export function ModelosFilters() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Status Filter */}
         <div className="space-y-2">
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <div className="w-4 h-4 bg-green-100 rounded flex items-center justify-center">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             </div>
@@ -93,7 +93,7 @@ export function ModelosFilters() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotlovers-red/20 focus:border-hotlovers-red"
+            className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotlovers-red/20 focus:border-hotlovers-red"
           >
             {statusOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -105,14 +105,14 @@ export function ModelosFilters() {
 
         {/* Location Filter */}
         <div className="space-y-2">
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <MapPin className="w-4 h-4 text-blue-500" />
             <span>Localização</span>
           </label>
           <select
             value={locationFilter}
             onChange={(e) => setLocationFilter(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotlovers-red/20 focus:border-hotlovers-red"
+            className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotlovers-red/20 focus:border-hotlovers-red"
           >
             {locationOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -124,14 +124,14 @@ export function ModelosFilters() {
 
         {/* Rating Filter */}
         <div className="space-y-2">
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Star className="w-4 h-4 text-yellow-500" />
             <span>Avaliação</span>
           </label>
           <select
             value={ratingFilter}
             onChange={(e) => setRatingFilter(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotlovers-red/20 focus:border-hotlovers-red"
+            className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotlovers-red/20 focus:border-hotlovers-red"
           >
             {ratingOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -143,11 +143,11 @@ export function ModelosFilters() {
 
         {/* Date Range */}
         <div className="space-y-2">
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Calendar className="w-4 h-4 text-purple-500" />
             <span>Período</span>
           </label>
-          <select className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotlovers-red/20 focus:border-hotlovers-red">
+          <select className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotlovers-red/20 focus:border-hotlovers-red">
             <option value="hoje">Hoje</option>
             <option value="7dias">Últimos 7 dias</option>
             <option value="30dias">Últimos 30 dias</option>
@@ -158,23 +158,23 @@ export function ModelosFilters() {
       </div>
 
       {/* Quick Stats */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
             <p className="text-2xl font-bold text-green-600">67</p>
-            <p className="text-xs text-gray-500">Online agora</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Online agora</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-blue-600">R$ 234K</p>
-            <p className="text-xs text-gray-500">Receita total</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Receita total</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-yellow-600">4.8</p>
-            <p className="text-xs text-gray-500">Rating médio</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Rating médio</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-purple-600">892K</p>
-            <p className="text-xs text-gray-500">Visualizações</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Visualizações</p>
           </div>
         </div>
       </div>

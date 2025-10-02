@@ -15,7 +15,7 @@ export function RevenueAnalytics() {
   const maxValue = Math.max(...revenueData.map(d => d.total));
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -23,8 +23,8 @@ export function RevenueAnalytics() {
             <DollarSign className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Análise de Receitas</h3>
-            <p className="text-gray-500 text-sm">Receitas por categoria - últimos 6 meses</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Análise de Receitas</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Receitas por categoria - últimos 6 meses</p>
           </div>
         </div>
         
@@ -38,7 +38,7 @@ export function RevenueAnalytics() {
       <div className="space-y-4">
         {/* Current Total */}
         <div className="text-center py-4">
-          <p className="text-3xl font-black text-gray-800">
+          <p className="text-3xl font-black text-gray-800 dark:text-gray-100">
             R$ {(revenueData[revenueData.length - 1].total / 1000).toFixed(1)}K
           </p>
           <p className="text-gray-500">Receita do mês atual</p>
@@ -71,7 +71,7 @@ export function RevenueAnalytics() {
               </div>
               
               {/* Label */}
-              <p className="text-xs text-gray-600 mt-2 font-medium">
+              <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-400 mt-2 font-medium">
                 {data.month}
               </p>
             </div>
@@ -79,18 +79,18 @@ export function RevenueAnalytics() {
         </div>
 
         {/* Legend */}
-        <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-100 dark:border-gray-700">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-            <span className="text-sm text-gray-600">Gorjetas</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">Gorjetas</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-            <span className="text-sm text-gray-600">Assinaturas</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">Assinaturas</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
-            <span className="text-sm text-gray-600">Afiliados</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">Afiliados</span>
           </div>
         </div>
       </div>

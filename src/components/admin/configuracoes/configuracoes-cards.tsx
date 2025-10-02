@@ -91,7 +91,7 @@ export function ConfiguracoesCards() {
       {sections.map((section, index) => (
         <div
           key={index}
-          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
+          className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
         >
           {/* Background Gradient */}
           <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${section.bgGradient} opacity-5 rounded-full -translate-y-32 translate-x-32 group-hover:opacity-10 transition-opacity`}></div>
@@ -99,14 +99,14 @@ export function ConfiguracoesCards() {
           {/* Content */}
           <div className="relative">
             {/* Header */}
-            <div className="flex items-center space-x-4 mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center space-x-4 mb-6 pb-4 border-b border-gray-200 dark:border-gray-700 dark:border-gray-700">
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${section.bgGradient} shadow-lg`}>
                 <section.icon className="w-6 h-6 text-white" />
               </div>
               
               <div>
-                <h3 className="text-xl font-black text-gray-800 dark:text-gray-100">{section.title}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Configure os parâmetros abaixo</p>
+                <h3 className="text-xl font-black text-gray-800 dark:text-gray-100 dark:text-gray-100">{section.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">Configure os parâmetros abaixo</p>
               </div>
             </div>
 
@@ -115,14 +115,14 @@ export function ConfiguracoesCards() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {section.fields.map((field) => (
                   <div key={field.key} className="space-y-2">
-                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 dark:text-gray-300">
                       {field.label}
                     </label>
                     <input
                       type={field.type}
                       value={configs[field.key as keyof typeof configs] as string}
                       onChange={(e) => handleChange(field.key, e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-hotlovers-red focus:ring-2 focus:ring-hotlovers-red/20 transition-all font-semibold text-gray-800 dark:text-gray-100"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-hotlovers-red focus:ring-2 focus:ring-hotlovers-red/20 transition-all font-semibold text-gray-800 dark:text-gray-100 dark:text-gray-100"
                     />
                   </div>
                 ))}
@@ -133,8 +133,8 @@ export function ConfiguracoesCards() {
             {section.toggles && (
               <div className="space-y-4">
                 {section.toggles.map((toggle) => (
-                  <div key={toggle.key} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-gray-100 dark:bg-gray-700 transition-colors">
-                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 cursor-pointer">
+                  <div key={toggle.key} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:bg-gray-700 transition-colors">
+                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 dark:text-gray-300 cursor-pointer">
                       {toggle.label}
                     </label>
                     <button
@@ -143,7 +143,7 @@ export function ConfiguracoesCards() {
                         configs[toggle.key as keyof typeof configs] ? 'bg-green-500' : 'bg-gray-300'
                       }`}
                     >
-                      <div className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full transition-transform ${
+                      <div className={`absolute top-1 left-1 w-5 h-5 bg-white dark:bg-gray-800 rounded-full transition-transform ${
                         configs[toggle.key as keyof typeof configs] ? 'translate-x-7' : 'translate-x-0'
                       }`}></div>
                     </button>

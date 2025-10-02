@@ -88,22 +88,22 @@ export function ChatFlutuante({ className }: ChatFlutuanteProps) {
     <div className={`${className || ""}`}>
       {/* Botão flutuante */}
       {!isOpen && (
-        <div className="fixed bottom-32 right-8 z-50">
+        <div className="fixed bottom-6 right-6 z-50 lg:bottom-8 lg:right-8">
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative w-16 h-16 bg-hotlovers-gradient rounded-full shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce"
+            className="group relative w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-full shadow-2xl hover:shadow-red-500/50 hover:scale-110 transition-all duration-300"
           >
             <MessageCircle className="w-8 h-8 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
             
             {/* Badge de notificação */}
-            <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse">
-              <span className="text-xs font-bold text-black">!</span>
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg">
+              <Sparkles className="w-3 h-3 text-black" />
             </div>
 
             {/* Tooltip */}
-            <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-sm rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              💬 Fale comigo!
-              <div className="absolute top-full right-4 border-4 border-transparent border-t-black/80"></div>
+            <div className="absolute bottom-full right-0 mb-3 px-4 py-2 bg-gray-900 text-white text-sm rounded-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl">
+              💬 Fale com a Luna!
+              <div className="absolute top-full right-6 border-8 border-transparent border-t-gray-900"></div>
             </div>
           </button>
         </div>
@@ -111,10 +111,10 @@ export function ChatFlutuante({ className }: ChatFlutuanteProps) {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-32 right-8 z-50 animate-scale-in">
-          <div className={`bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 ${
-            isMinimized ? 'w-80 h-16' : 'w-80 h-96'
-          }`}>
+        <div className="fixed bottom-6 right-6 z-50 lg:bottom-8 lg:right-8">
+          <div className={`bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 ${
+            isMinimized ? 'w-80 h-16' : 'w-96 h-[600px]'
+          } flex flex-col`}>
             
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border rounded-t-2xl bg-hotlovers-gradient">
@@ -150,21 +150,21 @@ export function ChatFlutuante({ className }: ChatFlutuanteProps) {
             {/* Chat Body */}
             {!isMinimized && (
               <>
-                <div className="flex-1 p-4 h-64 overflow-y-auto space-y-4">
+                <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-800/50">
                   {messages.map((msg) => (
                     <div
                       key={msg.id}
                       className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-xs px-4 py-2 rounded-2xl ${
+                        className={`max-w-[75%] px-4 py-3 rounded-2xl shadow-sm ${
                           msg.type === 'user'
-                            ? 'bg-hotlovers-gradient text-white'
-                            : 'bg-muted text-foreground'
+                            ? 'bg-gradient-to-br from-red-600 to-red-700 text-white'
+                            : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700'
                         }`}
                       >
-                        <p className="text-sm">{msg.content}</p>
-                        <p className="text-xs opacity-70 mt-1">
+                        <p className="text-sm leading-relaxed">{msg.content}</p>
+                        <p className={`text-xs mt-1 ${msg.type === 'user' ? 'text-white/70' : 'text-gray-500 dark:text-gray-400'}`}>
                           {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </p>
                       </div>
@@ -173,11 +173,11 @@ export function ChatFlutuante({ className }: ChatFlutuanteProps) {
 
                   {isTyping && (
                     <div className="flex justify-start">
-                      <div className="bg-muted px-4 py-2 rounded-2xl">
+                      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-3 rounded-2xl shadow-sm">
                         <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-hotlovers-red rounded-full animate-bounce"></div>
-                          <div className="w-2 h-2 bg-hotlovers-red rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                          <div className="w-2 h-2 bg-hotlovers-red rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                          <div className="w-2 h-2 bg-red-600 rounded-full animate-bounce"></div>
+                          <div className="w-2 h-2 bg-red-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                          <div className="w-2 h-2 bg-red-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                         </div>
                       </div>
                     </div>
@@ -186,48 +186,47 @@ export function ChatFlutuante({ className }: ChatFlutuanteProps) {
                   <div ref={messagesEndRef} />
                 </div>
 
-                {/* Input */}
-                <div className="p-4 border-t border-border">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex-1">
-                      <textarea
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        onKeyPress={handleKeyPress}
-                        placeholder="Digite sua mensagem..."
-                        className="w-full p-3 rounded-xl bg-muted border-0 focus:outline-none focus:ring-2 focus:ring-hotlovers-red/50 resize-none text-sm"
-                        rows={1}
-                        disabled={isTyping}
-                      />
-                    </div>
-                    <button
-                      onClick={handleSendMessage}
-                      disabled={!message.trim() || isTyping}
-                      className="p-3 bg-hotlovers-gradient rounded-xl text-white hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      <Send className="w-4 h-4" />
-                    </button>
-                  </div>
-
+                {/* Input Area */}
+                <div className="p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
                   {/* Quick Actions */}
-                  <div className="flex items-center space-x-2 mt-3 text-xs">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     <button
                       onClick={() => setMessage("Quero saber sobre os planos premium")}
-                      className="px-3 py-1 bg-muted rounded-full text-muted-foreground hover:text-foreground transition-colors"
+                      className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-700 dark:text-gray-300 hover:text-red-600 rounded-lg text-xs font-medium transition-all"
                     >
                       💎 Planos
                     </button>
                     <button
                       onClick={() => setMessage("Como funciona a plataforma?")}
-                      className="px-3 py-1 bg-muted rounded-full text-muted-foreground hover:text-foreground transition-colors"
+                      className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-700 dark:text-gray-300 hover:text-red-600 rounded-lg text-xs font-medium transition-all"
                     >
                       ❓ Ajuda
                     </button>
                     <button
                       onClick={() => setMessage("Quero ser modelo")}
-                      className="px-3 py-1 bg-muted rounded-full text-muted-foreground hover:text-foreground transition-colors"
+                      className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-700 dark:text-gray-300 hover:text-red-600 rounded-lg text-xs font-medium transition-all"
                     >
                       🔥 Ser Modelo
+                    </button>
+                  </div>
+
+                  {/* Input */}
+                  <div className="flex items-end space-x-2">
+                    <textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Digite sua mensagem..."
+                      className="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/30 resize-none text-sm text-gray-900 dark:text-white"
+                      rows={2}
+                      disabled={isTyping}
+                    />
+                    <button
+                      onClick={handleSendMessage}
+                      disabled={!message.trim() || isTyping}
+                      className="p-3 bg-gradient-to-br from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 rounded-xl text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                    >
+                      <Send className="w-5 h-5" />
                     </button>
                   </div>
                 </div>

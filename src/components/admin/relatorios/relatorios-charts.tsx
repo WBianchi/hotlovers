@@ -33,14 +33,14 @@ export function RelatoriosCharts() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Gráfico de Acessos */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50">
+      <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700/50 dark:border-gray-700/50">
         <div className="flex items-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
             <TrendingUp className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">Evolução de Acessos</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Últimos 6 meses</p>
+            <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100">Evolução de Acessos</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">Últimos 6 meses</p>
           </div>
         </div>
 
@@ -54,8 +54,8 @@ export function RelatoriosCharts() {
                   className="w-full bg-gradient-to-t from-blue-500 to-indigo-600 rounded-lg hover:from-blue-600 hover:to-indigo-700 transition-all cursor-pointer"
                   style={{ height: `${heightPercent}%` }}
                 ></div>
-                <span className="text-xs font-medium text-gray-600 dark:text-gray-400">{item.mes}</span>
-                <span className="text-xs font-bold text-gray-800 dark:text-gray-100">{(item.acessos / 1000).toFixed(1)}K</span>
+                <span className="text-xs font-medium text-gray-600 dark:text-gray-400 dark:text-gray-400">{item.mes}</span>
+                <span className="text-xs font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100">{(item.acessos / 1000).toFixed(1)}K</span>
               </div>
             );
           })}
@@ -63,14 +63,14 @@ export function RelatoriosCharts() {
       </div>
 
       {/* Gráfico de Cadastros */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50">
+      <div className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700/50 dark:border-gray-700/50">
         <div className="flex items-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-green-600 rounded-lg flex items-center justify-center">
             <Users className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">Cadastros por Tipo</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Últimos 30 dias</p>
+            <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100">Cadastros por Tipo</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">Últimos 30 dias</p>
           </div>
         </div>
 
@@ -82,10 +82,10 @@ export function RelatoriosCharts() {
             return (
               <div key={item.tipo} className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">{item.tipo}</span>
-                  <span className="text-sm font-bold text-gray-800 dark:text-gray-100">{item.valor}</span>
+                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 dark:text-gray-300">{item.tipo}</span>
+                  <span className="text-sm font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100">{item.valor}</span>
                 </div>
-                <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
+                <div className="w-full h-4 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
                   <div 
                     className={`h-full ${item.cor} transition-all duration-500`}
                     style={{ width: `${percentage}%` }}
@@ -96,10 +96,10 @@ export function RelatoriosCharts() {
           })}
         </div>
 
-        <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 dark:border-gray-700">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Total de Cadastros</span>
-            <span className="text-2xl font-black text-gray-800 dark:text-gray-100">
+            <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 dark:text-gray-400">Total de Cadastros</span>
+            <span className="text-2xl font-black text-gray-800 dark:text-gray-100 dark:text-gray-100">
               {cadastrosDados.reduce((acc, item) => acc + item.valor, 0).toLocaleString()}
             </span>
           </div>
@@ -107,34 +107,34 @@ export function RelatoriosCharts() {
       </div>
 
       {/* Gráfico de Vendas (Full Width) */}
-      <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50">
+      <div className="lg:col-span-2 bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700/50 dark:border-gray-700/50">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
               <Package className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">Vendas por Categoria</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Últimos 6 meses - Receita em R$</p>
+              <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100">Vendas por Categoria</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400">Últimos 6 meses - Receita em R$</p>
             </div>
           </div>
           
           <div className="flex items-center space-x-4 text-xs">
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <span className="text-gray-600 dark:text-gray-400">Assinaturas</span>
+              <span className="text-gray-600 dark:text-gray-400 dark:text-gray-400">Assinaturas</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-              <span className="text-gray-600 dark:text-gray-400">Packs</span>
+              <span className="text-gray-600 dark:text-gray-400 dark:text-gray-400">Packs</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-              <span className="text-gray-600 dark:text-gray-400">Fotos</span>
+              <span className="text-gray-600 dark:text-gray-400 dark:text-gray-400">Fotos</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <span className="text-gray-600 dark:text-gray-400">Vídeos</span>
+              <span className="text-gray-600 dark:text-gray-400 dark:text-gray-400">Vídeos</span>
             </div>
           </div>
         </div>
@@ -160,8 +160,8 @@ export function RelatoriosCharts() {
                   <div className="bg-orange-500" style={{ height: `${fotosPercent}%` }}></div>
                   <div className="bg-red-500" style={{ height: `${videosPercent}%` }}></div>
                 </div>
-                <span className="text-xs font-medium text-gray-600 dark:text-gray-400">{item.mes}</span>
-                <span className="text-xs font-bold text-gray-800 dark:text-gray-100">R$ {(total / 1000).toFixed(0)}K</span>
+                <span className="text-xs font-medium text-gray-600 dark:text-gray-400 dark:text-gray-400">{item.mes}</span>
+                <span className="text-xs font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100">R$ {(total / 1000).toFixed(0)}K</span>
               </div>
             );
           })}

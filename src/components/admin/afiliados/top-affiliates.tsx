@@ -51,22 +51,22 @@ export function TopAffiliates() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center space-x-3 mb-6">
         <div className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center">
           <Crown className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-gray-800">Top Afiliados</h3>
-          <p className="text-gray-500 text-sm">Melhor performance este mês</p>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Top Afiliados</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Melhor performance este mês</p>
         </div>
       </div>
 
       {/* Top Affiliates List */}
       <div className="space-y-4">
         {topAffiliates.map((affiliate, index) => (
-          <div key={affiliate.username} className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
+          <div key={affiliate.username} className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors group">
             {/* Rank Badge */}
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm ${
               index === 0 ? 'bg-yellow-100 text-yellow-700' :
@@ -95,8 +95,8 @@ export function TopAffiliates() {
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
                 <div>
-                  <p className="font-semibold text-gray-800">{affiliate.name}</p>
-                  <p className="text-sm text-gray-500">{affiliate.username}</p>
+                  <p className="font-semibold text-gray-800 dark:text-gray-100">{affiliate.name}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{affiliate.username}</p>
                 </div>
                 <div className="text-right">
                   <div className="flex items-center space-x-2">
@@ -109,7 +109,7 @@ export function TopAffiliates() {
               </div>
 
               {/* Metrics */}
-              <div className="flex items-center justify-between text-xs text-gray-500">
+              <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center space-x-1">
                     <Users className="w-3 h-3" />
@@ -136,25 +136,25 @@ export function TopAffiliates() {
       </div>
 
       {/* Summary Stats */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="grid grid-cols-3 gap-4">
           <div className="text-center">
             <p className="text-lg font-bold text-purple-600">
               R$ {(topAffiliates.reduce((sum, a) => sum + a.commission, 0) / 1000).toFixed(0)}K
             </p>
-            <p className="text-xs text-gray-500">Comissões Top 4</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Comissões Top 4</p>
           </div>
           <div className="text-center">
             <p className="text-lg font-bold text-blue-600">
               {topAffiliates.reduce((sum, a) => sum + a.conversions, 0)}
             </p>
-            <p className="text-xs text-gray-500">Total Conversões</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Total Conversões</p>
           </div>
           <div className="text-center">
             <p className="text-lg font-bold text-green-600">
               {(topAffiliates.reduce((sum, a) => sum + a.conversionRate, 0) / topAffiliates.length).toFixed(1)}%
             </p>
-            <p className="text-xs text-gray-500">Taxa Média</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Taxa Média</p>
           </div>
         </div>
       </div>

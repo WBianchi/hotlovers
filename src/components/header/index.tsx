@@ -15,7 +15,7 @@ interface HeaderProps {
     nome: string;
     email: string;
     foto?: string;
-    tipo: "admin" | "modelo" | "assinante";
+    tipo: "admin" | "modelo" | "assinante" | "afiliado";
   };
 }
 

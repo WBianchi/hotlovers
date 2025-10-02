@@ -65,7 +65,7 @@ export function RelatoriosStats() {
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 hover:scale-105 group relative overflow-hidden"
+          className="bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 hover:scale-105 group relative overflow-hidden"
         >
           {/* Background Gradient */}
           <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${stat.bgGradient} opacity-5 rounded-full -translate-y-16 translate-x-16 group-hover:opacity-10 transition-opacity`}></div>
@@ -87,16 +87,16 @@ export function RelatoriosStats() {
 
             {/* Value */}
             <div className="mb-2">
-              <h3 className="text-3xl font-black text-gray-800 dark:text-gray-100 group-hover:text-gray-900 transition-colors">
+              <h3 className="text-3xl font-black text-gray-800 dark:text-gray-100 dark:text-gray-100 group-hover:text-gray-900 transition-colors">
                 {stat.value}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300 font-semibold">
+              <p className="text-gray-700 dark:text-gray-300 dark:text-gray-300 font-semibold">
                 {stat.label}
               </p>
             </div>
 
             {/* Description */}
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400">
               {stat.description}
             </p>
           </div>

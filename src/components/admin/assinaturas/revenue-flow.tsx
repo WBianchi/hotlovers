@@ -18,7 +18,7 @@ export function RevenueFlow() {
   const growth = ((currentMrr - previousMrr) / previousMrr * 100).toFixed(1);
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -26,8 +26,8 @@ export function RevenueFlow() {
             <DollarSign className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Fluxo de Receita Recorrente</h3>
-            <p className="text-gray-500 text-sm">MRR e crescimento - últimos 6 meses</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Fluxo de Receita Recorrente</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">MRR e crescimento - últimos 6 meses</p>
           </div>
         </div>
         
@@ -67,7 +67,7 @@ export function RevenueFlow() {
               </div>
               
               {/* Label */}
-              <p className="text-xs text-gray-600 mt-2 font-medium">
+              <p className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-400 mt-2 font-medium">
                 {data.month}
               </p>
             </div>
@@ -75,7 +75,7 @@ export function RevenueFlow() {
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100">
+        <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
           <div className="text-center p-3 bg-blue-50 rounded-lg">
             <p className="text-lg font-bold text-blue-600">
               {revenueData[revenueData.length - 1].newSubs}

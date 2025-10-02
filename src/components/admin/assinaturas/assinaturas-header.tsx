@@ -13,7 +13,7 @@ export function AssinaturasHeader() {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
         
         {/* Left Side */}
@@ -25,21 +25,21 @@ export function AssinaturasHeader() {
             </div>
             
             {/* Badge */}
-            <div className="absolute -top-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center border-2 border-white">
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800">
               <TrendingUp className="w-3 h-3 text-white" />
             </div>
           </div>
 
           {/* Text */}
           <div>
-            <h1 className="text-3xl font-black text-gray-800">
+            <h1 className="text-3xl font-black text-gray-800 dark:text-gray-100">
               Gestão de Assinaturas
             </h1>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 dark:text-gray-400 text-lg">
               Controle completo do seu negócio recorrente 💳
             </p>
             
-            <div className="flex items-center space-x-4 mt-2 text-sm text-gray-600">
+            <div className="flex items-center space-x-4 mt-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="flex items-center space-x-1">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span>1,456 ativas</span>
@@ -67,13 +67,13 @@ export function AssinaturasHeader() {
               placeholder="Buscar assinaturas..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-64 px-4 py-2 pl-10 bg-gray-100 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:bg-white transition-all"
+              className="w-64 px-4 py-2 pl-10 bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:bg-white transition-all"
             />
-            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-gray-400 dark:text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
           </div>
 
           {/* Filter Button */}
-          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 hover:border-gray-400 text-gray-700 rounded-xl transition-all hover:scale-105">
+          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 hover:border-gray-400 text-gray-700 dark:text-gray-300 dark:text-gray-300 rounded-xl transition-all hover:scale-105">
             <Filter className="w-4 h-4" />
             <span className="font-medium">Filtros</span>
           </button>
@@ -88,7 +88,7 @@ export function AssinaturasHeader() {
           </button>
 
           {/* Export Button */}
-          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 hover:border-gray-400 text-gray-700 rounded-xl transition-all hover:scale-105">
+          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 hover:border-gray-400 text-gray-700 dark:text-gray-300 dark:text-gray-300 rounded-xl transition-all hover:scale-105">
             <Download className="w-4 h-4" />
             <span className="font-medium">Relatório</span>
           </button>
@@ -96,27 +96,27 @@ export function AssinaturasHeader() {
       </div>
 
       {/* Quick Stats Bar */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <div className="text-center">
             <p className="text-2xl font-bold text-green-600">1,456</p>
-            <p className="text-xs text-gray-500">Assinaturas Ativas</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Assinaturas Ativas</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-yellow-600">89</p>
-            <p className="text-xs text-gray-500">Expiram Hoje</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Expiram Hoje</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-red-600">67</p>
-            <p className="text-xs text-gray-500">Canceladas</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Canceladas</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-blue-600">R$ 89.2K</p>
-            <p className="text-xs text-gray-500">MRR Atual</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">MRR Atual</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-purple-600">+12.4%</p>
-            <p className="text-xs text-gray-500">Crescimento</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Crescimento</p>
           </div>
         </div>
       </div>

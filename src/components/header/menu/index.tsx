@@ -11,8 +11,7 @@ const menuItems = [
   { href: "/modelos", label: "Modelos", icon: Users },
   { href: "/modelos-hot", label: "Hot Models", icon: Flame },
   { href: "/hot-videos", label: "Hot Vídeos", icon: Video },
-  { href: "/sobre", label: "Sobre", icon: Info },
-  { href: "/blog", label: "Blog", icon: PenTool },
+  { href: "/sobre", label: "Sobre", icon: Info }
 ];
 
 export function Menu({ className }: MenuProps) {

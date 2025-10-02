@@ -130,18 +130,18 @@ export function AssinantesTable() {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-xl font-bold text-gray-800">Lista de Assinantes</h3>
-          <p className="text-gray-500 text-sm">{assinantesData.length} assinantes encontrados</p>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Lista de Assinantes</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">{assinantesData.length} assinantes encontrados</p>
         </div>
 
         {/* Bulk Actions */}
         {selectedAssinantes.length > 0 && (
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               {selectedAssinantes.length} selecionados
             </span>
             <button className="px-3 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
@@ -161,7 +161,7 @@ export function AssinantesTable() {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-gray-200">
+            <tr className="border-b border-gray-200 dark:border-gray-700">
               <th className="text-left py-3 px-4">
                 <input
                   type="checkbox"
@@ -170,20 +170,20 @@ export function AssinantesTable() {
                   className="rounded border-gray-300 text-blue-500 focus:ring-blue-500"
                 />
               </th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Assinante</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Plano</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Próxima Cobrança</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Modelo Favorita</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Pagamento</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Ações</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Assinante</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Plano</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Status</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Próxima Cobrança</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Modelo Favorita</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Pagamento</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Ações</th>
             </tr>
           </thead>
           <tbody>
             {assinantesData.map((assinante) => (
               <tr 
                 key={assinante.id} 
-                className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
+                className={`border-b border-gray-100 dark:border-gray-700 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors ${
                   selectedAssinantes.includes(assinante.id) ? 'bg-blue-50' : ''
                 }`}
               >
@@ -206,8 +206,8 @@ export function AssinantesTable() {
                       className="w-12 h-12 rounded-xl object-cover ring-2 ring-white"
                     />
                     <div>
-                      <p className="font-semibold text-gray-800">{assinante.nome}</p>
-                      <p className="text-sm text-gray-500">{assinante.email}</p>
+                      <p className="font-semibold text-gray-800 dark:text-gray-100">{assinante.nome}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{assinante.email}</p>
                       <p className="text-xs text-gray-400">
                         Desde {new Date(assinante.inicioAssinatura).toLocaleDateString('pt-BR')}
                       </p>
@@ -222,7 +222,7 @@ export function AssinantesTable() {
                       <Crown className="w-3 h-3 mr-1" />
                       {assinante.plano}
                     </span>
-                    <p className="text-sm font-semibold text-gray-800">R$ {assinante.preco.toFixed(2)}</p>
+                    <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">R$ {assinante.preco.toFixed(2)}</p>
                     {assinante.renovacaoAutomatica && (
                       <div className="flex items-center space-x-1">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -253,7 +253,7 @@ export function AssinantesTable() {
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
                       <Calendar className="w-3 h-3 text-gray-400" />
-                      <span className="text-sm text-gray-700">
+                      <span className="text-sm text-gray-700 dark:text-gray-300">
                         {new Date(assinante.proximaCobranca).toLocaleDateString('pt-BR')}
                       </span>
                     </div>
@@ -272,7 +272,7 @@ export function AssinantesTable() {
                 <td className="py-4 px-4">
                   <div className="flex items-center space-x-2">
                     <Crown className="w-3 h-3 text-hotlovers-red" />
-                    <span className="text-sm text-gray-700">{assinante.modeloFavorita}</span>
+                    <span className="text-sm text-gray-700 dark:text-gray-300">{assinante.modeloFavorita}</span>
                   </div>
                 </td>
 
@@ -281,9 +281,9 @@ export function AssinantesTable() {
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
                       <CreditCard className="w-3 h-3 text-blue-500" />
-                      <span className="text-sm text-gray-700">{assinante.metodoPagamento}</span>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">{assinante.metodoPagamento}</span>
                     </div>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
                       Último: R$ {assinante.valorPago.toFixed(2)}
                     </p>
                   </div>
@@ -295,11 +295,11 @@ export function AssinantesTable() {
                     <button className="w-8 h-8 rounded-lg bg-blue-100 hover:bg-blue-200 flex items-center justify-center transition-colors">
                       <Eye className="w-4 h-4 text-blue-600" />
                     </button>
-                    <button className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
-                      <Edit className="w-4 h-4 text-gray-600" />
+                    <button className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-colors">
+                      <Edit className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                     </button>
-                    <button className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
-                      <MoreHorizontal className="w-4 h-4 text-gray-600" />
+                    <button className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-colors">
+                      <MoreHorizontal className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                     </button>
                   </div>
                 </td>
@@ -310,16 +310,16 @@ export function AssinantesTable() {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
-        <p className="text-sm text-gray-600">
+      <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           Mostrando {assinantesData.length} de {assinantesData.length} assinantes
         </p>
         <div className="flex items-center space-x-2">
-          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50">
+          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors disabled:opacity-50">
             Anterior
           </button>
           <span className="px-3 py-2 bg-blue-500 text-white rounded-lg">1</span>
-          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors">
             Próximo
           </button>
         </div>

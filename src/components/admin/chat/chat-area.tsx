@@ -64,9 +64,9 @@ export function ChatArea() {
   ];
 
   return (
-    <div className="lg:col-span-3 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700/50 dark:border-gray-700/50 flex flex-col overflow-hidden">
+    <div className="lg:col-span-3 bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 dark:border-gray-700/50 dark:border-gray-700/50 flex flex-col overflow-hidden">
       {/* Chat Header - SOFISTICADO */}
-      <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-gray-50 to-white">
+      <div className="p-4 border-b border-gray-200 dark:border-gray-700 dark:border-gray-700 bg-gradient-to-r from-gray-50 to-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             {/* Avatar com Status */}
@@ -76,14 +76,14 @@ export function ChatArea() {
                 alt="Larissa"
                 className="w-12 h-12 rounded-full object-cover ring-2 ring-hotlovers-red/20"
               />
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-800"></div>
             </div>
             
             <div>
               <div className="flex items-center space-x-2">
-                <p className="font-bold text-gray-800 dark:text-gray-100">Larissa Silva</p>
+                <p className="font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100">Larissa Silva</p>
                 <span className="text-gray-400">↔</span>
-                <p className="font-semibold text-gray-600 dark:text-gray-400">João Santos</p>
+                <p className="font-semibold text-gray-600 dark:text-gray-400 dark:text-gray-400">João Santos</p>
               </div>
               <p className="text-xs text-green-600 flex items-center space-x-1 mt-0.5">
                 <span className="w-1.5 h-1.5 bg-green-600 rounded-full animate-pulse"></span>
@@ -98,23 +98,23 @@ export function ChatArea() {
               <span className="text-sm font-bold text-emerald-700">R$ 79,90 transacionado</span>
             </div>
             
-            <button className="p-2 hover:bg-gray-100 dark:bg-gray-700 rounded-lg transition-colors">
-              <Phone className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:bg-gray-700 rounded-lg transition-colors">
+              <Phone className="w-5 h-5 text-gray-600 dark:text-gray-400 dark:text-gray-400" />
             </button>
             
-            <button className="p-2 hover:bg-gray-100 dark:bg-gray-700 rounded-lg transition-colors">
-              <VideoIcon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:bg-gray-700 rounded-lg transition-colors">
+              <VideoIcon className="w-5 h-5 text-gray-600 dark:text-gray-400 dark:text-gray-400" />
             </button>
             
-            <button className="p-2 hover:bg-gray-100 dark:bg-gray-700 rounded-lg transition-colors">
-              <MoreVertical className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:bg-gray-700 rounded-lg transition-colors">
+              <MoreVertical className="w-5 h-5 text-gray-600 dark:text-gray-400 dark:text-gray-400" />
             </button>
           </div>
         </div>
       </div>
 
       {/* Chat Messages - SOFISTICADO */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50 dark:bg-gray-900">
+      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900">
         {mensagens.map((msg) => {
           // Sistema Messages
           if (msg.tipo === "transacao") {
@@ -156,7 +156,7 @@ export function ChatArea() {
                 
                 {/* Message Bubble */}
                 <div className={`flex flex-col ${isModelo ? "items-end" : "items-start"} space-y-1`}>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 px-3">
+                  <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400 px-3">
                     {msg.nome} • {msg.timestamp}
                   </span>
                   
@@ -164,7 +164,7 @@ export function ChatArea() {
                     className={`px-4 py-3 rounded-2xl shadow-sm ${
                       isModelo
                         ? "bg-gradient-to-r from-hotlovers-red to-pink-600 text-white rounded-br-none"
-                        : "bg-white text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-bl-none"
+                        : "bg-white text-gray-800 dark:text-gray-100 dark:text-gray-100 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-bl-none"
                     }`}
                   >
                     <p className="text-sm leading-relaxed">{msg.mensagem}</p>
@@ -197,33 +197,33 @@ export function ChatArea() {
       </div>
 
       {/* Chat Input - SOFISTICADO */}
-      <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white">
+      <div className="p-4 border-t border-gray-200 dark:border-gray-700 dark:border-gray-700 bg-white">
         <div className="flex items-center space-x-3">
-          <button className="p-3 hover:bg-gray-100 dark:bg-gray-700 rounded-xl transition-all hover:scale-105">
-            <Paperclip className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          <button className="p-3 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:bg-gray-700 rounded-xl transition-all hover:scale-105">
+            <Paperclip className="w-5 h-5 text-gray-600 dark:text-gray-400 dark:text-gray-400" />
           </button>
           
-          <button className="p-3 hover:bg-gray-100 dark:bg-gray-700 rounded-xl transition-all hover:scale-105">
-            <Image className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          <button className="p-3 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:bg-gray-700 rounded-xl transition-all hover:scale-105">
+            <Image className="w-5 h-5 text-gray-600 dark:text-gray-400 dark:text-gray-400" />
           </button>
           
-          <button className="p-3 hover:bg-gray-100 dark:bg-gray-700 rounded-xl transition-all hover:scale-105">
-            <Smile className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          <button className="p-3 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:bg-gray-700 rounded-xl transition-all hover:scale-105">
+            <Smile className="w-5 h-5 text-gray-600 dark:text-gray-400 dark:text-gray-400" />
           </button>
           
           <input
             type="text"
             placeholder="👁️ Modo visualização - Admin não envia mensagens"
             disabled
-            className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 border-none rounded-xl text-sm font-medium text-gray-400 cursor-not-allowed"
+            className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 border-none rounded-xl text-sm font-medium text-gray-400 dark:text-gray-500 cursor-not-allowed"
           />
 
-          <button disabled className="px-6 py-3 bg-gray-200 rounded-xl opacity-50 cursor-not-allowed">
+          <button disabled className="px-6 py-3 bg-gray-200 dark:bg-gray-600 rounded-xl opacity-50 cursor-not-allowed">
             <Send className="w-5 h-5 text-gray-400" />
           </button>
         </div>
         
-        <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center font-medium">
+        <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-3 text-center font-medium">
           🔒 Admin monitora conversas em tempo real mas não pode participar
         </p>
       </div>

@@ -60,7 +60,7 @@ export function SystemHealth() {
   const healthPercentage = Math.round((healthyCount / systemMetrics.length) * 100);
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -68,8 +68,8 @@ export function SystemHealth() {
             <Activity className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">System Health</h3>
-            <p className="text-gray-500 text-sm">Status dos serviços</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">System Health</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Status dos serviços</p>
           </div>
         </div>
         
@@ -91,7 +91,7 @@ export function SystemHealth() {
         {systemMetrics.map((metric) => (
           <div
             key={metric.name}
-            className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors"
+            className="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:bg-gray-700 transition-colors"
           >
             <div className="flex items-center space-x-3">
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
@@ -107,8 +107,8 @@ export function SystemHealth() {
               </div>
               
               <div>
-                <p className="font-medium text-gray-800">{metric.name}</p>
-                <p className="text-xs text-gray-500">Uptime: {metric.uptime}</p>
+                <p className="font-medium text-gray-800 dark:text-gray-100">{metric.name}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Uptime: {metric.uptime}</p>
               </div>
             </div>
             
@@ -126,7 +126,7 @@ export function SystemHealth() {
                 <span className="capitalize">{metric.status}</span>
               </div>
               
-              <p className="text-xs text-gray-500 mt-1">{metric.responseTime}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-1">{metric.responseTime}</p>
             </div>
           </div>
         ))}
@@ -134,14 +134,14 @@ export function SystemHealth() {
 
       {/* Recent Alerts */}
       <div>
-        <h4 className="font-semibold text-gray-800 mb-3 flex items-center space-x-2">
+        <h4 className="font-semibold text-gray-800 dark:text-gray-100 dark:text-gray-100 mb-3 flex items-center space-x-2">
           <AlertTriangle className="w-4 h-4 text-orange-500" />
           <span>Alertas Recentes</span>
         </h4>
         
         <div className="space-y-2 max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200">
           {recentAlerts.map((alert, index) => (
-            <div key={index} className="flex items-start space-x-2 p-2 rounded-lg hover:bg-gray-50">
+            <div key={index} className="flex items-start space-x-2 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800">
               <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
                 alert.type === 'success' ? 'bg-green-500' :
                 alert.type === 'warning' ? 'bg-orange-500' :
@@ -150,8 +150,8 @@ export function SystemHealth() {
               }`}></div>
               
               <div className="flex-1 min-w-0">
-                <p className="text-sm text-gray-800">{alert.message}</p>
-                <p className="text-xs text-gray-500">{alert.time}</p>
+                <p className="text-sm text-gray-800 dark:text-gray-100">{alert.message}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{alert.time}</p>
               </div>
             </div>
           ))}
@@ -159,7 +159,7 @@ export function SystemHealth() {
       </div>
 
       {/* Footer */}
-      <div className="mt-6 pt-4 border-t border-gray-100 text-center">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 dark:border-gray-700 text-center">
         <button className="text-sm text-hotlovers-red hover:text-hotlovers-red/80 font-medium">
           Ver logs detalhados
         </button>

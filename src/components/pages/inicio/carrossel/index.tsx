@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Play, Heart, Crown } from "lucide-react";
+import Link from "next/link";
 
 interface CarrosselProps {
   className?: string;
@@ -164,10 +165,11 @@ export function Carrossel({ className }: CarrosselProps) {
         >
           {/* Duplicar array para efeito infinito */}
           {[...videosDestaque, ...videosDestaque].map((video, index) => (
-            <div
+            <Link
               key={`${video.id}-${index}`}
+              href={`/modelos/${video.id}`}
               className={`
-                relative group cursor-pointer transition-all duration-500
+                relative group cursor-pointer transition-all duration-500 block
                 ${getItemScale(index % videosDestaque.length)}
                 ${getItemOpacity(index % videosDestaque.length)}
                 hover:scale-130 hover:z-20
@@ -214,7 +216,7 @@ export function Carrossel({ className }: CarrosselProps) {
                   <Heart className="w-6 h-6 text-white hover:text-hotlovers-red hover:fill-current transition-colors cursor-pointer" />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

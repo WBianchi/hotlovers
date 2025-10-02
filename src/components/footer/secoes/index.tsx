@@ -13,6 +13,7 @@ const secoes = [
       { href: "/modelos-hot", label: "Hot Models" },
       { href: "/hot-videos", label: "Hot Vídeos" },
       { href: "/sobre", label: "Sobre Nós" },
+      { href: "/blog", label: "Blog" }
     ]
   },
   {
@@ -20,33 +21,45 @@ const secoes = [
     links: [
       { href: "/cadastro?tipo=modelo", label: "Seja Modelo" },
       { href: "/modelo/visao-geral", label: "Painel Modelo" },
-      { href: "/politicas-modelos", label: "Políticas para Modelos" },
+      { href: "/politicas-modelos", label: "Políticas" },
       { href: "/atendimento", label: "Suporte" },
+      { href: "/ganhos-modelo", label: "Como Ganhar" }
     ]
   },
   {
     titulo: "Para Assinantes",
     links: [
-      { href: "/cadastro?tipo=assinante", label: "Assinar" },
+      { href: "/cadastro?tipo=assinante", label: "Assinar Agora" },
       { href: "/assinante/minha-assinatura", label: "Minha Conta" },
-      { href: "/politicas-assinantes", label: "Políticas" },
+      { href: "/planos", label: "Planos" },
       { href: "/duvidas-frequentes", label: "FAQ" },
+      { href: "/como-funciona", label: "Como Funciona" }
     ]
   },
   {
-    titulo: "Legal",
+    titulo: "Programa de Afiliados",
     links: [
-      { href: "/termos-condicoes", label: "Termos e Condições" },
-      { href: "/politicas-privacidade", label: "Privacidade" },
-      { href: "/cookies", label: "Cookies" },
-      { href: "/atendimento", label: "Contato" },
+      { href: "/afiliados", label: "Seja Afiliado" },
+      { href: "/afiliados/como-funciona", label: "Como Funciona" },
+      { href: "/afiliados/comissoes", label: "Comissões" },
+      { href: "/afiliados/materiais", label: "Materiais" }
     ]
   },
+  {
+    titulo: "Legal & Suporte",
+    links: [
+      { href: "/termos-condicoes", label: "Termos de Uso" },
+      { href: "/politicas-privacidade", label: "Privacidade" },
+      { href: "/cookies", label: "Política de Cookies" },
+      { href: "/atendimento", label: "Contato" },
+      { href: "/seguranca", label: "Segurança" }
+    ]
+  }
 ];
 
 export function Secoes({ className }: SecoesProps) {
   return (
-    <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 ${className || ""}`}>
+    <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 ${className || ""}`}>
       {secoes.map((secao) => (
         <div key={secao.titulo}>
           <h3 className="font-bold text-lg mb-4 text-hotlovers-red">

@@ -57,7 +57,7 @@ const actions = [
 
 export function QuickActions() {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -65,8 +65,8 @@ export function QuickActions() {
             <Plus className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Ações Rápidas</h3>
-            <p className="text-gray-500 text-sm">Tarefas mais utilizadas</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Ações Rápidas</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Tarefas mais utilizadas</p>
           </div>
         </div>
       </div>
@@ -76,14 +76,14 @@ export function QuickActions() {
         {actions.map((action, index) => (
           <button
             key={action.label}
-            className="group relative flex items-start space-x-3 p-4 rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-md text-left overflow-hidden"
+            className="group relative flex items-start space-x-3 p-4 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 hover:border-gray-300 transition-all duration-200 hover:shadow-md text-left overflow-hidden"
           >
             {/* Background Gradient on Hover */}
             <div className={`absolute inset-0 bg-gradient-to-br ${action.color} opacity-0 group-hover:opacity-5 transition-opacity rounded-xl`}></div>
             
             {/* Icon */}
             <div className="relative">
-              <div className={`w-10 h-10 rounded-lg bg-gray-100 group-hover:bg-gradient-to-br group-hover:${action.color} flex items-center justify-center transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg`}>
+              <div className={`w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 group-hover:bg-gradient-to-br group-hover:${action.color} flex items-center justify-center transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg`}>
                 <action.icon className={`w-5 h-5 ${action.iconColor} group-hover:text-white transition-colors`} />
               </div>
               
@@ -97,17 +97,17 @@ export function QuickActions() {
 
             {/* Content */}
             <div className="flex-1 min-w-0 relative">
-              <p className="font-semibold text-gray-800 group-hover:text-gray-900 transition-colors">
+              <p className="font-semibold text-gray-800 dark:text-gray-100 dark:text-gray-100 group-hover:text-gray-900 transition-colors">
                 {action.label}
               </p>
-              <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">
+              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-400 mt-0.5 line-clamp-2">
                 {action.description}
               </p>
             </div>
 
             {/* Arrow */}
             <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="w-5 h-5 text-gray-400 group-hover:text-gray-600">
+              <div className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-gray-600">
                 →
               </div>
             </div>
@@ -116,7 +116,7 @@ export function QuickActions() {
       </div>
 
       {/* Footer */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <button className="w-full py-2 text-sm text-hotlovers-red hover:text-hotlovers-red/80 font-medium transition-colors">
           Ver todas as ferramentas administrativas
         </button>

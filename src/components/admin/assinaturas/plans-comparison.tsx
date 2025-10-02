@@ -47,7 +47,7 @@ export function PlansComparison() {
   const avgRetention = plansData.reduce((sum, plan) => sum + plan.retention, 0) / plansData.length;
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -55,14 +55,14 @@ export function PlansComparison() {
             <Star className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Comparação de Planos</h3>
-            <p className="text-gray-500 text-sm">Performance e métricas por plano</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Comparação de Planos</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Performance e métricas por plano</p>
           </div>
         </div>
         
         <div className="text-right">
-          <p className="text-lg font-bold text-gray-800">{totalSubscribers}</p>
-          <p className="text-xs text-gray-500">Total Assinantes</p>
+          <p className="text-lg font-bold text-gray-800 dark:text-gray-100">{totalSubscribers}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">Total Assinantes</p>
         </div>
       </div>
 
@@ -71,7 +71,7 @@ export function PlansComparison() {
         {plansData.map((plan, index) => (
           <div
             key={plan.name}
-            className="p-4 rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 hover:scale-[1.02] group"
+            className="p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:border-gray-700 hover:border-gray-300 transition-all duration-300 hover:scale-[1.02] group"
           >
             <div className="flex items-center justify-between mb-3">
               {/* Plan Info */}
@@ -80,8 +80,8 @@ export function PlansComparison() {
                   <plan.icon className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-gray-800">{plan.name}</h4>
-                  <p className="text-sm text-gray-600">R$ {plan.price.toFixed(2)}/mês</p>
+                  <h4 className="text-lg font-bold text-gray-800 dark:text-gray-100">{plan.name}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">R$ {plan.price.toFixed(2)}/mês</p>
                 </div>
               </div>
 
@@ -93,16 +93,16 @@ export function PlansComparison() {
                     R$ {(plan.revenue / 1000).toFixed(1)}K
                   </span>
                 </div>
-                <p className="text-xs text-gray-500">Receita mensal</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Receita mensal</p>
               </div>
             </div>
 
             {/* Metrics Row */}
             <div className="grid grid-cols-4 gap-3">
               {/* Subscribers */}
-              <div className="text-center p-2 bg-gray-50 rounded-lg">
-                <p className="text-lg font-bold text-gray-800">{plan.subscribers}</p>
-                <p className="text-xs text-gray-500">Assinantes</p>
+              <div className="text-center p-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 rounded-lg">
+                <p className="text-lg font-bold text-gray-800 dark:text-gray-100">{plan.subscribers}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Assinantes</p>
               </div>
 
               {/* Retention */}
@@ -126,11 +126,11 @@ export function PlansComparison() {
 
             {/* Progress Bar */}
             <div className="mt-3">
-              <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+              <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400 dark:text-gray-400 mb-1">
                 <span>Participação na receita</span>
                 <span>{((plan.revenue / totalRevenue) * 100).toFixed(1)}%</span>
               </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
                 <div 
                   className={`h-full bg-gradient-to-r ${plan.bgGradient} transition-all duration-1000`}
                   style={{ width: `${(plan.revenue / totalRevenue) * 100}%` }}
@@ -146,7 +146,7 @@ export function PlansComparison() {
                   +{(Math.random() * 20 + 5).toFixed(1)}% crescimento
                 </span>
               </div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-500 dark:text-gray-400">
                 LTV: R$ {(plan.price * plan.avgLifetime).toFixed(0)}
               </div>
             </div>
@@ -155,25 +155,25 @@ export function PlansComparison() {
       </div>
 
       {/* Summary */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
             <p className="text-lg font-bold text-emerald-600">
               R$ {(totalRevenue / 1000).toFixed(1)}K
             </p>
-            <p className="text-xs text-gray-500">Receita Total</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Receita Total</p>
           </div>
           <div>
             <p className="text-lg font-bold text-blue-600">
               {avgRetention.toFixed(1)}%
             </p>
-            <p className="text-xs text-gray-500">Retenção Média</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Retenção Média</p>
           </div>
           <div>
             <p className="text-lg font-bold text-purple-600">
               R$ {(totalRevenue / totalSubscribers).toFixed(0)}
             </p>
-            <p className="text-xs text-gray-500">ARPU</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">ARPU</p>
           </div>
         </div>
       </div>

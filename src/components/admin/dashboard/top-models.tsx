@@ -40,7 +40,7 @@ const topModels = [
 
 export function TopModels() {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
@@ -48,8 +48,8 @@ export function TopModels() {
             <Crown className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-800">Top Modelos</h3>
-            <p className="text-gray-500 text-sm">Maiores receitas do mês</p>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Top Modelos</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Maiores receitas do mês</p>
           </div>
         </div>
         
@@ -63,7 +63,7 @@ export function TopModels() {
         {topModels.map((model, index) => (
           <div
             key={model.id}
-            className="flex items-center space-x-4 p-3 rounded-xl hover:bg-gray-50 transition-all duration-200 group cursor-pointer"
+            className="flex items-center space-x-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-all duration-200 group cursor-pointer"
           >
             {/* Rank */}
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm ${
@@ -83,7 +83,7 @@ export function TopModels() {
               />
               
               {/* Status */}
-              <div className={`absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-white ${
+              <div className={`absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-white dark:border-gray-800 ${
                 model.status === 'online' ? 'bg-green-500' : 'bg-gray-400'
               }`}>
                 {model.status === 'online' && (
@@ -102,21 +102,21 @@ export function TopModels() {
             {/* Info */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center space-x-2">
-                <p className="font-semibold text-gray-800 group-hover:text-hotlovers-red transition-colors truncate">
+                <p className="font-semibold text-gray-800 dark:text-gray-100 dark:text-gray-100 group-hover:text-hotlovers-red transition-colors truncate">
                   {model.name}
                 </p>
                 <div className="flex items-center space-x-0.5">
                   <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                  <span className="text-xs text-gray-600">{model.rating}</span>
+                  <span className="text-xs text-gray-600 dark:text-gray-400">{model.rating}</span>
                 </div>
               </div>
               
-              <p className="text-sm text-gray-500">{model.username}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{model.username}</p>
               
               <div className="flex items-center space-x-3 mt-1">
                 <div className="flex items-center space-x-1">
                   <Heart className="w-3 h-3 text-red-500" />
-                  <span className="text-xs text-gray-600">{model.subscribers}</span>
+                  <span className="text-xs text-gray-600 dark:text-gray-400">{model.subscribers}</span>
                 </div>
                 
                 <div className={`flex items-center space-x-1 px-2 py-0.5 rounded-full text-xs font-medium ${
@@ -132,16 +132,16 @@ export function TopModels() {
 
             {/* Revenue */}
             <div className="text-right">
-              <p className="font-bold text-gray-800">{model.revenue}</p>
-              <p className="text-xs text-gray-500">este mês</p>
+              <p className="font-bold text-gray-800 dark:text-gray-100">{model.revenue}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">este mês</p>
             </div>
           </div>
         ))}
       </div>
 
       {/* Footer */}
-      <div className="mt-6 pt-4 border-t border-gray-100 text-center">
-        <p className="text-sm text-gray-500">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 dark:border-gray-700 text-center">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           Total de <span className="font-semibold text-hotlovers-red">89 modelos ativas</span>
         </p>
       </div>

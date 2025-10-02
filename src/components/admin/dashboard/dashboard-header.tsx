@@ -11,7 +11,7 @@ export function DashboardHeader() {
   });
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
         
         {/* Left Side */}
@@ -26,23 +26,23 @@ export function DashboardHeader() {
             <div className="absolute inset-0 bg-hotlovers-gradient rounded-2xl opacity-75 animate-ping"></div>
             
             {/* Status Badge */}
-            <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800">
               <Activity className="w-3 h-3 text-white animate-pulse" />
             </div>
           </div>
 
           {/* Text */}
           <div>
-            <h1 className="text-3xl font-black text-gray-800">
+            <h1 className="text-3xl font-black text-gray-800 dark:text-gray-100">
               Dashboard Admin
             </h1>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 dark:text-gray-400 text-lg">
               Bem-vindo de volta! 👋
             </p>
             
             <div className="flex items-center space-x-2 mt-1">
               <Calendar className="w-4 h-4 text-gray-400" />
-              <span className="text-sm text-gray-600 capitalize">
+              <span className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-400 capitalize">
                 {currentDate}
               </span>
             </div>

@@ -108,10 +108,10 @@ export function MetricsGrid() {
   return (
     <div className="space-y-6">
       {metrics.map((category) => (
-        <div key={category.category} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+        <div key={category.category} className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
           {/* Category Header */}
           <div className="mb-6">
-            <h3 className="text-xl font-bold text-gray-800">{category.category}</h3>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{category.category}</h3>
             <p className="text-gray-500">Métricas principais de {category.category.toLowerCase()}</p>
           </div>
 
@@ -120,7 +120,7 @@ export function MetricsGrid() {
             {category.items.map((metric, index) => (
               <div
                 key={metric.label}
-                className="p-5 rounded-xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105 group cursor-pointer relative overflow-hidden"
+                className="p-5 rounded-xl bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105 group cursor-pointer relative overflow-hidden"
               >
                 {/* Background Gradient */}
                 <div className={`absolute top-0 right-0 w-20 h-20 ${getColorClasses(metric.color, 'up')} opacity-5 rounded-full -translate-y-10 translate-x-10 group-hover:opacity-10 transition-opacity`}></div>
@@ -148,16 +148,16 @@ export function MetricsGrid() {
 
                 {/* Value */}
                 <div className="mb-3">
-                  <h4 className="text-3xl font-black text-gray-800 group-hover:text-gray-900 transition-colors">
+                  <h4 className="text-3xl font-black text-gray-800 dark:text-gray-100 dark:text-gray-100 group-hover:text-gray-900 transition-colors">
                     {metric.value}
                   </h4>
-                  <p className="text-gray-700 font-semibold">
+                  <p className="text-gray-700 dark:text-gray-300 font-semibold">
                     {metric.label}
                   </p>
                 </div>
 
                 {/* Description */}
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   {metric.description}
                 </p>
 

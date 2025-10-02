@@ -40,15 +40,15 @@ export function AssinantesFilters() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center space-x-3 mb-6">
         <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
           <Filter className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-gray-800">Filtros de Assinantes</h3>
-          <p className="text-gray-500 text-sm">Organize por status, plano e expiração</p>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Filtros de Assinantes</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Organize por status, plano e expiração</p>
         </div>
       </div>
 
@@ -63,8 +63,8 @@ export function AssinantesFilters() {
                 ? tab.color === 'green' ? 'bg-green-100 text-green-700 border border-green-200' :
                   tab.color === 'yellow' ? 'bg-yellow-100 text-yellow-700 border border-yellow-200' :
                   tab.color === 'red' ? 'bg-red-100 text-red-700 border border-red-200' :
-                  'bg-gray-100 text-gray-700 border border-gray-200'
-                : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                  'bg-gray-100 text-gray-700 dark:text-gray-300 dark:text-gray-300 border border-gray-200'
+                : 'bg-gray-50 text-gray-600 dark:text-gray-400 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:bg-gray-700'
             }`}
           >
             <span>{tab.label}</span>
@@ -83,14 +83,14 @@ export function AssinantesFilters() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Plan Filter */}
         <div className="space-y-2">
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Crown className="w-4 h-4 text-hotlovers-red" />
             <span>Plano</span>
           </label>
           <select
             value={planFilter}
             onChange={(e) => setPlanFilter(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+            className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
           >
             {planOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -102,14 +102,14 @@ export function AssinantesFilters() {
 
         {/* Status Filter */}
         <div className="space-y-2">
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <CreditCard className="w-4 h-4 text-green-500" />
             <span>Status do Pagamento</span>
           </label>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+            className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
           >
             {statusOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -121,14 +121,14 @@ export function AssinantesFilters() {
 
         {/* Expiration Filter */}
         <div className="space-y-2">
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <AlertTriangle className="w-4 h-4 text-yellow-500" />
             <span>Expiração</span>
           </label>
           <select
             value={expirationFilter}
             onChange={(e) => setExpirationFilter(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+            className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
           >
             {expirationOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -140,11 +140,11 @@ export function AssinantesFilters() {
 
         {/* Date Range */}
         <div className="space-y-2">
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Calendar className="w-4 h-4 text-purple-500" />
             <span>Período de Cadastro</span>
           </label>
-          <select className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+          <select className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
             <option value="hoje">Hoje</option>
             <option value="7dias">Últimos 7 dias</option>
             <option value="30dias">Últimos 30 dias</option>
@@ -155,48 +155,48 @@ export function AssinantesFilters() {
       </div>
 
       {/* Advanced Filters */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-gray-700">Filtros Avançados</p>
+          <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Filtros Avançados</p>
           <div className="flex items-center space-x-4">
             <label className="flex items-center space-x-2">
               <input type="checkbox" className="rounded border-gray-300 text-blue-500 focus:ring-blue-500" />
-              <span className="text-sm text-gray-600">Apenas renovações automáticas</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Apenas renovações automáticas</span>
             </label>
             <label className="flex items-center space-x-2">
               <input type="checkbox" className="rounded border-gray-300 text-blue-500 focus:ring-blue-500" />
-              <span className="text-sm text-gray-600">Apenas modelos favoritas</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Apenas modelos favoritas</span>
             </label>
             <label className="flex items-center space-x-2">
               <input type="checkbox" className="rounded border-gray-300 text-blue-500 focus:ring-blue-500" />
-              <span className="text-sm text-gray-600">Pagamentos em atraso</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Pagamentos em atraso</span>
             </label>
           </div>
         </div>
       </div>
 
       {/* Quick Stats */}
-      <div className="mt-6 pt-4 border-t border-gray-100">
+      <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <div className="text-center">
             <p className="text-2xl font-bold text-green-600">1,124</p>
-            <p className="text-xs text-gray-500">Ativos</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Ativos</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-yellow-600">89</p>
-            <p className="text-xs text-gray-500">Expiram em breve</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Expiram em breve</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-blue-600">R$ 67.8K</p>
-            <p className="text-xs text-gray-500">MRR</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">MRR</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-purple-600">89.3%</p>
-            <p className="text-xs text-gray-500">Retenção</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Retenção</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-red-600">45</p>
-            <p className="text-xs text-gray-500">Cancelados</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Cancelados</p>
           </div>
         </div>
       </div>

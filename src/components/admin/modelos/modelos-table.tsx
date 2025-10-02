@@ -99,18 +99,18 @@ export function ModelosTable() {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/50">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50 dark:border-gray-700/50 dark:border-gray-700/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-xl font-bold text-gray-800">Lista de Modelos</h3>
-          <p className="text-gray-500 text-sm">{modelosData.length} modelos encontradas</p>
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">Lista de Modelos</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">{modelosData.length} modelos encontradas</p>
         </div>
 
         {/* Bulk Actions */}
         {selectedModelos.length > 0 && (
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               {selectedModelos.length} selecionadas
             </span>
             <button className="px-3 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
@@ -127,7 +127,7 @@ export function ModelosTable() {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-gray-200">
+            <tr className="border-b border-gray-200 dark:border-gray-700">
               <th className="text-left py-3 px-4">
                 <input
                   type="checkbox"
@@ -136,20 +136,20 @@ export function ModelosTable() {
                   className="rounded border-gray-300 text-hotlovers-red focus:ring-hotlovers-red"
                 />
               </th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Modelo</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Métricas</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Receita</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Localização</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Última Atividade</th>
-              <th className="text-left py-3 px-4 font-semibold text-gray-700">Ações</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Modelo</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Status</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Métricas</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Receita</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Localização</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Última Atividade</th>
+              <th className="text-left py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">Ações</th>
             </tr>
           </thead>
           <tbody>
             {modelosData.map((modelo) => (
               <tr 
                 key={modelo.id} 
-                className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
+                className={`border-b border-gray-100 dark:border-gray-700 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors ${
                   selectedModelos.includes(modelo.id) ? 'bg-hotlovers-red/5' : ''
                 }`}
               >
@@ -179,8 +179,8 @@ export function ModelosTable() {
                       )}
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-800">{modelo.nome}</p>
-                      <p className="text-sm text-gray-500">{modelo.username}</p>
+                      <p className="font-semibold text-gray-800 dark:text-gray-100">{modelo.nome}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{modelo.username}</p>
                       <p className="text-xs text-gray-400">{modelo.email}</p>
                     </div>
                   </div>
@@ -206,9 +206,9 @@ export function ModelosTable() {
                     <div className="flex items-center space-x-2">
                       <Star className="w-3 h-3 text-yellow-500" />
                       <span className="text-sm font-medium">{modelo.rating}</span>
-                      <span className="text-xs text-gray-500">({modelo.assinantes} assinantes)</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">({modelo.assinantes} assinantes)</span>
                     </div>
-                    <div className="flex items-center space-x-3 text-xs text-gray-500">
+                    <div className="flex items-center space-x-3 text-xs text-gray-500 dark:text-gray-400">
                       <div className="flex items-center space-x-1">
                         <Eye className="w-3 h-3" />
                         <span>{(modelo.visualizacoes / 1000).toFixed(1)}K</span>
@@ -229,14 +229,14 @@ export function ModelosTable() {
                       R$ {(modelo.receita / 1000).toFixed(1)}K
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500">este mês</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">este mês</p>
                 </td>
 
                 {/* Localização */}
                 <td className="py-4 px-4">
                   <div className="flex items-center space-x-2">
                     <MapPin className="w-3 h-3 text-gray-400" />
-                    <span className="text-sm text-gray-600">{modelo.localizacao}</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">{modelo.localizacao}</span>
                   </div>
                 </td>
 
@@ -244,7 +244,7 @@ export function ModelosTable() {
                 <td className="py-4 px-4">
                   <div className="flex items-center space-x-2">
                     <Clock className="w-3 h-3 text-gray-400" />
-                    <span className="text-sm text-gray-600">{modelo.ultimaAtividade}</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">{modelo.ultimaAtividade}</span>
                   </div>
                   <p className="text-xs text-gray-400">
                     Cadastro: {new Date(modelo.cadastro).toLocaleDateString('pt-BR')}
@@ -257,8 +257,8 @@ export function ModelosTable() {
                     <button className="w-8 h-8 rounded-lg bg-blue-100 hover:bg-blue-200 flex items-center justify-center transition-colors">
                       <Eye className="w-4 h-4 text-blue-600" />
                     </button>
-                    <button className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
-                      <MoreHorizontal className="w-4 h-4 text-gray-600" />
+                    <button className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-colors">
+                      <MoreHorizontal className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                     </button>
                   </div>
                 </td>
@@ -269,16 +269,16 @@ export function ModelosTable() {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
-        <p className="text-sm text-gray-600">
+      <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           Mostrando {modelosData.length} de {modelosData.length} modelos
         </p>
         <div className="flex items-center space-x-2">
-          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50">
+          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors disabled:opacity-50">
             Anterior
           </button>
           <span className="px-3 py-2 bg-hotlovers-red text-white rounded-lg">1</span>
-          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:bg-gray-800 dark:hover:bg-gray-800 transition-colors">
             Próximo
           </button>
         </div>

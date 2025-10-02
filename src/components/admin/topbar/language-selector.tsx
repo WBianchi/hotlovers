@@ -41,7 +41,7 @@ export function LanguageSelector() {
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-200 hover:scale-105 group relative overflow-hidden"
+        className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center transition-all duration-200 hover:scale-105 group relative overflow-hidden"
       >
         {/* Flag Background */}
         <span className="text-lg group-hover:scale-110 transition-transform">
@@ -62,13 +62,13 @@ export function LanguageSelector() {
           />
           
           {/* Menu */}
-          <div className="absolute top-12 right-0 z-20 bg-white rounded-2xl shadow-2xl border border-gray-200/50 p-2 min-w-[280px] backdrop-blur-lg animate-in slide-in-from-top-2 duration-200">
+          <div className="absolute top-12 right-0 z-20 bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-2 min-w-[280px] backdrop-blur-lg animate-in slide-in-from-top-2 duration-200">
             
             {/* Header */}
             <div className="px-3 py-2 border-b border-gray-100">
               <div className="flex items-center space-x-2">
                 <Globe className="w-4 h-4 text-hotlovers-red" />
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                   Idioma / Language
                 </p>
               </div>
@@ -83,12 +83,12 @@ export function LanguageSelector() {
                     setSelectedLang(lang.code);
                     setIsOpen(false);
                   }}
-                  className={`w-full flex items-center space-x-3 px-3 py-3 rounded-xl text-left transition-all duration-200 hover:bg-gray-50 group ${
+                  className={`w-full flex items-center space-x-3 px-3 py-3 rounded-xl text-left transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800 group ${
                     selectedLang === lang.code ? 'bg-hotlovers-red/5 border border-hotlovers-red/20' : ''
                   }`}
                 >
                   {/* Flag */}
-                  <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <span className="text-lg">{lang.flag}</span>
                   </div>
                   
@@ -114,7 +114,7 @@ export function LanguageSelector() {
 
             {/* Footer */}
             <div className="px-3 py-2 border-t border-gray-100">
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-xs text-gray-400 dark:text-gray-500 text-center">
                 Tradução automática disponível
               </p>
             </div>

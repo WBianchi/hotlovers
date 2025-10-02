@@ -71,7 +71,10 @@ export async function POST(request: NextRequest) {
     // Verificar se é assinante
     if (!user) {
       const assinante = await prisma.assinante.findUnique({ 
-        where: { email }
+        where: { email },
+        include: {
+          afiliacao: true // Incluir dados de afiliado se existir
+        }
       });
       if (assinante) {
         const senhaValida = await bcrypt.compare(password, assinante.senha);
@@ -82,7 +85,8 @@ export async function POST(request: NextRequest) {
           );
         }
         user = assinante;
-        userType = 'assinante';
+        // Se o assinante tem registro de afiliado, ele é afiliado
+        userType = assinante.afiliacao ? 'afiliado' : 'assinante';
         userId = assinante.id;
         userName = assinante.nome;
         userFoto = assinante.foto;
@@ -108,6 +112,7 @@ export async function POST(request: NextRequest) {
     // Determinar redirect baseado no tipo de usuário
     const redirectTo = userType === 'admin' ? '/admin/dashboard' 
                      : userType === 'modelo' ? '/modelo/dashboard'
+                     : userType === 'afiliado' ? '/afiliado/dashboard'
                      : '/assinante/dashboard';
 
     // Criar resposta e setar cookie
