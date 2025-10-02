@@ -1,0 +1,9 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background vermelho -->
+  <rect width="64" height="64" rx="12" fill="#DC2626"/>
+  
+  <!-- Ícone de fogo estilizado - MAIOR -->
+  <path d="M32 8C32 8 18 20 18 34C18 43.9411 26.0589 52 36 52C45.9411 52 54 43.9411 54 34C54 20 40 8 32 8Z" fill="white" opacity="0.95"/>
+  <path d="M32 18C32 18 24 26 24 34C24 39.5228 28.4772 44 34 44C39.5228 44 44 39.5228 44 34C44 26 36 18 32 18Z" fill="#FCD34D"/>
+  <path d="M32 26C32 26 28 30 28 34C28 36.7614 30.2386 39 33 39C35.7614 39 38 36.7614 38 34C38 30 34 26 32 26Z" fill="#DC2626"/>
+</svg>

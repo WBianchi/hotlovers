@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: "HotLovers - Plataforma de Conteúdo Adulto",
   description: "A melhor plataforma de conteúdo adulto premium com as modelos mais quentes do Brasil",
   keywords: "conteúdo adulto, modelos, premium, assinatura, brasil",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({
